@@ -1,23 +1,26 @@
-﻿using FirstNotebook.PubSub;
-using System;
+﻿using System;
 using System.Threading;
 using System.Threading.Tasks;
+using FirstNotebook.PubSub;
 
 namespace FirstNotebook.Search
 {
-
     public class SearchEngine
     {
-        CancellationTokenSource cts;
-        EventAggregator _eventAggregator;
+        private CancellationTokenSource _cts;
+        private EventAggregator _eventAggregator;
         private Book _masterBook;
-        private bool _isStillSearching;
 
         public SearchEngine(Book book, EventAggregator eventAggregator)
         {
             _masterBook = book;
-            _isStillSearching = false;
             _eventAggregator = eventAggregator;
+            _cts = null;
+        }
+
+        public void UpdateBook(Book book)
+        {
+            _masterBook = book;
         }
 
         // This method is responsible for getting the desired pages from the MasterBook that meet
@@ -25,151 +28,73 @@ namespace FirstNotebook.Search
         // their work, which may send a new search request.  If this happens, and we have not
         // completed our search, we will cancel the original search, and start a new search.
         // When the method completes, this will send an event to indicate the search is complete.
-        // There will have to be an event listener to listen for the completed search result.
+        // There is an event listener to listen for the completed search result.
         // This is a Single-Invocation call.
         // This could use ProgressChangedEventArgs if you want to provide feedback on how much you have searched.
         // Optionally Provide Support for Returning Incremental Results
 
-        // Use EventAggregator Publish/Subscribe, and publish a FindMatchingPagesEvent 
+        // Use EventAggregator Publish/Subscribe, and publish a FindMatchingPagesEvent
 
         public async void FindMatchingPages(string searchToken, StringComparison comparison)
         {
-            if (_isStillSearching)
-            {
-                CancelFindMatchingPages();
-            }
+            CancelFindMatchingPages();
 
-            cts = new CancellationTokenSource();
-
+            _cts = new CancellationTokenSource();
             try
             {
-                _isStillSearching = true;
-                Book resultingBook = await FindMatchingPagesAsync(cts.Token, searchToken, comparison);
-                _eventAggregator.Publish(new FindMatchingPagesEvent(resultingBook));
-                _isStillSearching = false;
+                System.Diagnostics.Debug.WriteLine($"Begin search for {searchToken}");
+                Book resultingBook = await FindMatchingPagesAsync(_cts.Token, searchToken, comparison);
+                _eventAggregator.Publish(new FindMatchingPagesEvent(resultingBook, searchToken));
+                _cts = null;
             }
             catch (OperationCanceledException)
             {
-                // Cancelled.  Do nothing
+                System.Diagnostics.Debug.WriteLine("Cancel Exeption");
             }
             catch (Exception)
             {
+                System.Diagnostics.Debug.WriteLine("Unknown Exception.");
             }
+        }
 
+        public void CancelFindMatchingPages()
+        {
+            System.Diagnostics.Debug.WriteLine("Want to Cancel Active Search");
+            if (_cts != null)
+            {
+                _cts.Cancel();
+                System.Diagnostics.Debug.WriteLine("Cancel Active Search");
+            }
         }
 
         private async Task<Book> FindMatchingPagesAsync(CancellationToken ct, string searchToken, StringComparison comparison)
         {
-            //Book matchingPages = new Book();
-            //foreach (Page page in _pages)
-            //{
-            //    if (page.ContainsMatching(token, comparison))
-            //    {
-            //        matchingPages.AddPage(page);
-            //    }
-            //}
-            //return matchingPages;
+            if (ct.IsCancellationRequested)
+            {
+                System.Diagnostics.Debug.WriteLine($"Canceled Search before it even began {searchToken}");
+                ct.ThrowIfCancellationRequested();
+            }
 
-            await Task.Delay(250);
-            return new Book();
+            // This will group any searches together, and also allow the UI to be responsive by running this in its own thread.
+            await Task.Delay(150).ConfigureAwait(false);
 
+            Book matchingPages = new Book();
+            foreach (Page page in _masterBook.GetPages())
+            {
+                if (ct.IsCancellationRequested)
+                {
+                    System.Diagnostics.Debug.WriteLine($"Canceled Search for {searchToken}");
+                    ct.ThrowIfCancellationRequested();
+                    break;
+                }
 
+                if (page.ContainsMatching(searchToken, comparison))
+                {
+                    matchingPages.AddPage(page);
+                }
+            }
+
+            return matchingPages;
         }
-
-        private void CancelFindMatchingPages()
-        {
-            if (cts != null)
-            {
-                cts.Cancel();
-                _isStillSearching = false;
-            }
-        }
-
-
-        /*
-        public SearchRecord DoSearch(SearchRecord startingPoint, Page currentPage, string searchToken)
-        {
-            bool startFromTop = false;
-
-            // This happens if while in a search, the person clicks on a different page.
-            if (startingPoint.Page != currentPage)
-            {
-                startFromTop = true;
-            }
-
-            SearchRecord nextMatch = new SearchRecord();
-            nextMatch.Token = startingPoint.Token;
-            nextMatch.StringComparison = startingPoint.StringComparison;
-
-            int start = startingPoint.Location + 1;
-            if (startingPoint.IsClear())
-            {
-                // Happens when you click in a page during a search.
-                nextMatch.Page = currentPage;
-                nextMatch.Location = 0;
-                startFromTop = true;
-            }
-
-            int rangeLocation = 0;
-
-            while (true)
-            {
-                if (startFromTop == true)
-                {
-                    rangeLocation = currentPage.PageTitle.IndexOf(startingPoint.Token, startingPoint.StringComparison);
-                    if (rangeLocation != -1)
-                    {
-                        nextMatch.InTitle = true;
-                        nextMatch.Page = currentPage;
-                        nextMatch.Location = rangeLocation;
-                        return nextMatch;
-                    }
-                    else
-                    {
-                        nextMatch.Location = 0;
-                        start = 0;
-                    }
-                }
-
-                if (startingPoint.InTitle && (currentPage.PageTitle.Length >= start))
-                {
-                    rangeLocation = currentPage.PageTitle.IndexOf(startingPoint.Token, start, startingPoint.StringComparison);
-                    if (rangeLocation == -1)
-                    {
-                        start = 0;
-                    }
-                    else
-                    {
-                        nextMatch.Location = rangeLocation;
-                        nextMatch.Page = currentPage;
-                        nextMatch.InTitle = true;
-                        nextMatch.Token = searchToken;
-                        return nextMatch;
-                    }
-                }
-
-                rangeLocation = noteAreaTextBox.Text.IndexOf(searchToken, start, startingPoint.StringComparison);
-                if (rangeLocation == -1)
-                {
-                    Page curPage = currentPage;
-                    NextPage();
-                    if (currentPage == curPage)
-                    {
-                        return null;
-                    }
-
-                    startFromTop = true;
-                    start = 0;
-                }
-                else
-                {
-                    nextMatch.Location = rangeLocation;
-                    nextMatch.Page = currentPage;
-                    nextMatch.InTitle = false;
-                    return nextMatch;
-                }
-            }
-        }
-    */
     }
 }

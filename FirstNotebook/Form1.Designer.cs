@@ -699,6 +699,7 @@ namespace FirstNotebook
             }
 
             _book = new Book();
+            _searchEngine.UpdateBook(_book);
             _book.GetNewPage();
             _activeView = _book;
             UpdateViewWithBook();
@@ -717,18 +718,26 @@ namespace FirstNotebook
 
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                if ((myStream = openFileDialog1.OpenFile()) != null)
+                try
                 {
-                    openFileDialog1.Dispose();
-                    BinaryFormatter bf = new BinaryFormatter();
-                    _book = (Book)bf.Deserialize(myStream);
-                    _activeView = _book;
-                    myStream.Close();
-                    myStream.Dispose();
-                    UpdateViewWithBook();
-                    _pageIsDirty = false;
-                    Text = $"{ApplicationName} - {Path.GetFileName(_book.FileName)}";
-                    _book.Dirty = false;
+                    if ((myStream = openFileDialog1.OpenFile()) != null)
+                    {
+                        openFileDialog1.Dispose();
+                        BinaryFormatter bf = new BinaryFormatter();
+                        _book = (Book)bf.Deserialize(myStream);
+                        _searchEngine.UpdateBook(_book);
+                        _activeView = _book;
+                        myStream.Close();
+                        myStream.Dispose();
+                        UpdateViewWithBook();
+                        _pageIsDirty = false;
+                        Text = $"{ApplicationName} - {Path.GetFileName(_book.FileName)}";
+                        _book.Dirty = false;
+                    }
+                }
+                catch (Exception)
+                {
+                    // Issue opening file.
                 }
             }
             openFileDialog1.Dispose();
@@ -743,11 +752,22 @@ namespace FirstNotebook
             }
 
             SavePageChanges();
-            Stream stream = File.Open(_book.FileName, FileMode.Create);
-            BinaryFormatter bf = new BinaryFormatter();
-            bf.Serialize(stream, _book);
-            stream.Close();
-            stream.Dispose();
+            Stream stream = null;
+            try
+            {
+                stream = File.Open(_book.FileName, FileMode.Create);
+                BinaryFormatter bf = new BinaryFormatter();
+                bf.Serialize(stream, _book);
+                stream.Close();
+                stream.Dispose();
+            }
+            catch (Exception)
+            {
+                if (stream != null)
+                {
+                    stream.Dispose();
+                }
+            }
             _book.Dirty = false;
             _pageIsDirty = false;
             Text = $"{ApplicationName} - {Path.GetFileName(_book.FileName)}";

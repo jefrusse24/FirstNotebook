@@ -28,7 +28,7 @@ namespace FirstNotebook.PubSub
 
                 foreach (Subscription<TMessageType> sub in sublst)
                 {
-                    sub.CreatAction()?.Invoke(message);
+                    sub.CreateAction()?.Invoke(message);
                 }
             }
         }
@@ -56,7 +56,7 @@ namespace FirstNotebook.PubSub
             return actiondetail;
         }
 
-        public void UnSbscribe<TMessageType>(Subscription<TMessageType> subscription)
+        public void UnSubscribe<TMessageType>(Subscription<TMessageType> subscription)
         {
             Type t = typeof(TMessageType);
             if (subscriber.ContainsKey(t))
@@ -65,6 +65,7 @@ namespace FirstNotebook.PubSub
                 {
                     subscriber[t].Remove(subscription);
                 }
+
                 subscription = null;
             }
         }

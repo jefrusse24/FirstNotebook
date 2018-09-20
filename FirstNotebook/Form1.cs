@@ -28,7 +28,7 @@ namespace FirstNotebook
             EventAggregator eve = new EventAggregator();
             _book = new Book();
             _searchEngine = new SearchEngine(_book, eve);
-            eve.Subscribe<FindMatchingPagesEvent>(this.ReceivePageMatches);
+            eve.Subscribe<FindMatchingPagesEvent>(ReceivePageMatches);
 
             Text = $"{ApplicationName} - {Path.GetFileName(_book.FileName)}";
             _currentPage = _book.GetNewPage();
@@ -45,11 +45,6 @@ namespace FirstNotebook
             pageNumberLabel.Text = "Page " + _currentPage.PageNumber;
             dateLabel.Text = _currentPage.CreatedDate.ToString("yyyy-MM-dd h:mm tt");
             titleListView.Items[_currentPage.PageNumber - 1].Selected = true;
-        }
-
-        private void ReceivePageMatches(FindMatchingPagesEvent obj)
-        {
-            System.Diagnostics.Debug.WriteLine("Receive Matching Mages");
         }
 
         /**********************************************************************************
@@ -110,7 +105,6 @@ namespace FirstNotebook
                 return;
             }
 
-
             if ((e.KeyData == Keys.ControlKey) || (e.KeyData == Keys.Alt) || (e.KeyData == Keys.ShiftKey) || (e.KeyData == Keys.Menu) || (e.KeyData == Keys.Apps))
             {
                 return;
@@ -154,7 +148,8 @@ namespace FirstNotebook
             {
                 _searchToken = null;
                 searchBox.Text = string.Empty;
-                _activeView = GetApplicablePages();
+                _searchEngine.CancelFindMatchingPages();
+                _activeView = _book;
                 RebuildTitleList();
             }
 
@@ -477,7 +472,8 @@ namespace FirstNotebook
             {
                 // Clear the searching
                 _searchToken = null;
-                _activeView = GetApplicablePages();
+                _searchEngine.CancelFindMatchingPages();
+                _activeView = _book;
                 RebuildTitleList();
 
                 if (_activeView.PageCount > 0)
@@ -494,7 +490,21 @@ namespace FirstNotebook
 
             _searchToken = searchBox.Text;
             _searchRecord.Token = _searchToken;
-            _activeView = GetApplicablePages();
+            GetApplicablePages();
+        }
+
+        private void ReceivePageMatches(FindMatchingPagesEvent obj)
+        {
+            System.Diagnostics.Debug.WriteLine($"Receive Matching Pages for {obj.SearchToken}");
+
+            // Make sure we still care about the search results
+            if (!searchBox.ContainsFocus || !searchBox.Text.Equals(obj.SearchToken, StringComparison.OrdinalIgnoreCase))
+            {
+                System.Diagnostics.Debug.WriteLine($"Ignoring Matching Pages for {obj.SearchToken}");
+                return;
+            }
+
+            _activeView = obj.MatchingPages;
             RebuildTitleList();
 
             if (_activeView.PageCount > 0)
@@ -548,16 +558,14 @@ namespace FirstNotebook
             }
         }
 
-        private Book GetApplicablePages()
+        /// <summary>
+        /// This will call an asynchronous event that will perform a search for the pages that meet the search criteria.
+        /// This asynchronous call will be responsible for sending a message which we will listen for.
+        /// </summary>
+        private void GetApplicablePages()
         {
-            if (string.IsNullOrEmpty(_searchToken))
-            {
-                return _book;
-            }
-
             // TODO: Filter on tags, then search for token in tag result.
-            //_searchEngine.FindMatchingPages(_searchToken, _searchRecord.StringComparison);
-            return _book.FindMatching(_searchToken, _searchRecord.StringComparison);
+            _searchEngine.FindMatchingPages(_searchToken, _searchRecord.StringComparison);
         }
 
         private void ClearButton_Click(object sender, EventArgs e)

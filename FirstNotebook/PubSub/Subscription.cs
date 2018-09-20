@@ -5,22 +5,22 @@ namespace FirstNotebook.PubSub
 {
     public class Subscription<Tmessage> : IDisposable
     {
-        public readonly MethodInfo MethodInfo;
-        public readonly WeakReference TargetObjet;
-        public readonly bool IsStatic;
+        private readonly WeakReference _targetObjet;
+        private readonly bool _isStatic;
+        private readonly MethodInfo _methodInfo;
 
         private readonly EventAggregator _eventAggregator;
         private bool _isDisposed;
 
         public Subscription(Action<Tmessage> action, EventAggregator eventAggregator)
         {
-            MethodInfo = action.Method;
+            _methodInfo = action.Method;
             if (action.Target == null)
             {
-                IsStatic = true;
+                _isStatic = true;
             }
 
-            TargetObjet = new WeakReference(action.Target);
+            _targetObjet = new WeakReference(action.Target);
             _eventAggregator = eventAggregator;
         }
 
@@ -34,24 +34,23 @@ namespace FirstNotebook.PubSub
 
         public void Dispose()
         {
-            _eventAggregator.UnSbscribe(this);
+            _eventAggregator.UnSubscribe(this);
             _isDisposed = true;
         }
 
-        public Action<Tmessage> CreatAction()
+        public Action<Tmessage> CreateAction()
         {
-            if (TargetObjet.Target != null && TargetObjet.IsAlive)
+            if (_targetObjet.Target != null && _targetObjet.IsAlive)
             {
-                return (Action<Tmessage>)Delegate.CreateDelegate(typeof(Action<Tmessage>), TargetObjet.Target, MethodInfo);
+                return (Action<Tmessage>)Delegate.CreateDelegate(typeof(Action<Tmessage>), _targetObjet.Target, _methodInfo);
             }
 
-            if (IsStatic)
+            if (_isStatic)
             {
-                return (Action<Tmessage>)Delegate.CreateDelegate(typeof(Action<Tmessage>), MethodInfo);
+                return (Action<Tmessage>)Delegate.CreateDelegate(typeof(Action<Tmessage>), _methodInfo);
             }
 
             return null;
         }
     }
-
 }

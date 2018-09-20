@@ -2,19 +2,19 @@
 
 
 Bug0001: When closing the application and there have been modifications, when you click save, it should then close the application. If you hit cancel, it should not close.
-Bug0012:
+Bug0012: Filename does not necessarily match book name.  If you use explorer and copy a notebook, then open that copy, it will show the name of the original book, and not the filename.
 Bug0013:
 Bug0014:
 Bug0015:
+Bug0016:
 
 ENH0001: Add page tag functionality.
 ENH0002: Add Page Lock Functionality.  Use password in ENH0003 or seperate password.
 ENH0003: Add Preferences - Page Color, Host, username, password.
 ENH0004: Add Color chooser button to change the selected text.
-ENH0005: Search option should be done in a thread with a cancel token in case the search takes too long as a user could type a character while it is still searching
-making the experience sluggish.
 ENH0006:
 ENH0007:
+ENH0008:
 
 
 
@@ -49,5 +49,9 @@ Fixed.  THe issue was that it thought the book was dirty after opening it up.
 
 2018-09-12
 Released version 1.1  (Sent to Mike Silva)
-Started work to make search non-blocking.  Using publish/subscribe/cancelToken/tasks.
+Started work to make search non-blocking (ENH0005).  Using publish/subscribe/cancelToken/tasks.
+
+2018-09-19
+ENH0005: Search option should be done in a thread with a cancel token in case the search takes too long as a user could type a character while it is still searching
+making the experience sluggish.
 

@@ -2,11 +2,14 @@
 {
     public class FindMatchingPagesEvent
     {
-        private Book _matchingPages;
-
-        public FindMatchingPagesEvent(Book book)
+        public FindMatchingPagesEvent(Book book, string searchToken)
         {
-            _matchingPages = book;
+            MatchingPages = book;
+            SearchToken = searchToken;
         }
+
+        public Book MatchingPages { get; set; }
+
+        public string SearchToken { get; set;  }
     }
 }
