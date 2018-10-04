@@ -113,6 +113,8 @@
     <Content Include="Resources\Copy_16x.png" />
     <Content Include="Resources\Cut_16x.png" />
     <Content Include="Resources\Italic_16x.png" />
+    <Content Include="Resources\rgb-circleT-16x.png" />
+    <Content Include="Resources\rgb-circle-16x.png" />
     <Content Include="Resources\Table_16x.png" />
     <Content Include="Resources\Task_16x.png" />
     <Content Include="Resources\TextIndent_16x.png" />

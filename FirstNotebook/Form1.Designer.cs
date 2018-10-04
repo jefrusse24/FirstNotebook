@@ -50,6 +50,7 @@ namespace FirstNotebook
             this.ButtonOutdent = new System.Windows.Forms.Button();
             this.ButtonZoomIn = new System.Windows.Forms.Button();
             this.ButtonZoomOut = new System.Windows.Forms.Button();
+            this.ButtonFGColor = new System.Windows.Forms.Button();
             this.pageTagsComboBox = new System.Windows.Forms.ComboBox();
             this.dateLabel = new System.Windows.Forms.Label();
             this.pageNumberLabel = new System.Windows.Forms.Label();
@@ -109,6 +110,7 @@ namespace FirstNotebook
             this.searchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ButtonBGColor = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -181,8 +183,8 @@ namespace FirstNotebook
             this.noteAreaTextBox.BackColor = System.Drawing.SystemColors.Info;
             this.noteAreaTextBox.HideSelection = false;
             this.noteAreaTextBox.Name = "noteAreaTextBox";
-            this.noteAreaTextBox.KeyDown += new KeyEventHandler(this.NoteView_KeyUp);
-            this.noteAreaTextBox.LinkClicked += new LinkClickedEventHandler(this.Link_Clicked);
+            this.noteAreaTextBox.LinkClicked += new System.Windows.Forms.LinkClickedEventHandler(this.Link_Clicked);
+            this.noteAreaTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.NoteView_KeyUp);
             // 
             // RTBPannel
             // 
@@ -195,6 +197,8 @@ namespace FirstNotebook
             this.RTBPannel.Controls.Add(this.ButtonOutdent);
             this.RTBPannel.Controls.Add(this.ButtonZoomIn);
             this.RTBPannel.Controls.Add(this.ButtonZoomOut);
+            this.RTBPannel.Controls.Add(this.ButtonFGColor);
+            this.RTBPannel.Controls.Add(this.ButtonBGColor);
             this.RTBPannel.Name = "RTBPannel";
             // 
             // ButtonBold
@@ -261,6 +265,13 @@ namespace FirstNotebook
             this.ButtonZoomOut.TabStop = false;
             this.ButtonZoomOut.UseVisualStyleBackColor = true;
             this.ButtonZoomOut.Click += new System.EventHandler(this.ButtonZoom_Click);
+            // 
+            // ButtonFGColor
+            // 
+            resources.ApplyResources(this.ButtonFGColor, "ButtonFGColor");
+            this.ButtonFGColor.Name = "ButtonFGColor";
+            this.ButtonFGColor.UseVisualStyleBackColor = true;
+            this.ButtonFGColor.Click += new System.EventHandler(this.ButtonFGColor_Click);
             // 
             // pageTagsComboBox
             // 
@@ -653,6 +664,13 @@ namespace FirstNotebook
             resources.ApplyResources(this.aboutToolStripMenuItem, "aboutToolStripMenuItem");
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.MenuHelp_About);
             // 
+            // ButtonBGColor
+            // 
+            resources.ApplyResources(this.ButtonBGColor, "ButtonBGColor");
+            this.ButtonBGColor.Name = "ButtonBGColor";
+            this.ButtonBGColor.UseVisualStyleBackColor = true;
+            this.ButtonBGColor.Click += new System.EventHandler(this.ButtonBGColor_Click);
+            // 
             // Form1
             // 
             resources.ApplyResources(this, "$this");
@@ -887,6 +905,8 @@ namespace FirstNotebook
         private ToolStripMenuItem FormatBulletMenuItem;
         private ToolStripMenuItem FormatIndentMenuItem;
         private ToolStripMenuItem FormatOutdentMenuItem;
+        private Button ButtonFGColor;
+        private Button ButtonBGColor;
     }
 }
 

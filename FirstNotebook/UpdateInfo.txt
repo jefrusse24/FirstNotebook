@@ -11,7 +11,6 @@ Bug0016:
 ENH0001: Add page tag functionality.
 ENH0002: Add Page Lock Functionality.  Use password in ENH0003 or seperate password.
 ENH0003: Add Preferences - Page Color, Host, username, password.
-ENH0004: Add Color chooser button to change the selected text.
 ENH0006:
 ENH0007:
 ENH0008:
@@ -54,4 +53,8 @@ Started work to make search non-blocking (ENH0005).  Using publish/subscribe/can
 2018-09-19
 ENH0005: Search option should be done in a thread with a cancel token in case the search takes too long as a user could type a character while it is still searching
 making the experience sluggish.
+
+2018-10-03
+ENH0004: Add Color chooser button to change the selected text.
+Also added button to change background of selected text.
 

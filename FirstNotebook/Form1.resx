@@ -202,7 +202,7 @@
     <value>Vertical</value>
   </data>
   <data name="noteAreaTextBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>673, 363</value>
+    <value>667, 357</value>
   </data>
   <data name="noteAreaTextBox.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -520,6 +520,93 @@
   <data name="&gt;&gt;ButtonZoomOut.ZOrder" xml:space="preserve">
     <value>7</value>
   </data>
+  <data name="ButtonFGColor.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAS
+        dAAAEnQB3mYfeAAAAnFJREFUOE91kv1LE3Ecx+8fqp+DAhFa7beViQ/NYNkYpSvLTKYgtaggiVT8oTRF
+        XEQRSgtsWZFZYD6Q60HT2m5uc5vbnLfd7sHNze3d3fdup6N6w4t7+H7er+PuexT+EZZj4H/jw2/HOuIj
+        D7DpckFIpdTV8pQJ+Ewa8y3zWNJ5QFeF4akWwNTpkaipQUSvh89qRUYU1WklmiAajMF99Bt8tRugz4QI
+        ngYeWyYDEiYTYctohL/yGNgArbZUgZgTMKhfxqwxgqBalikl63YTwebpc0i2VSHSeQDbmSxZI4Kx9u94
+        URPGc6k0IyFL2Lc8GZBT4DhSZq6dAtujQ/pOJQL9jWSN4sQ0HMe9cDaE4JSKJUkumiMDOe8vchScw6TM
+        dusJCdtBCDwPaulDCGMnlXKJqVtxUsp4diGMDpHzHD2jlQk3DyOxMAFq8YkfrwzrmKzbIzDJkVLctYNs
+        cwU5L4gsktd1e3QcQXxiANTj12GYpCdaumMaMSZPSn+FG5WsRhXpewQGQb2f3YClK4aW2wp9DobM8tsF
+        ND7Kw+K9imBqmtwril8Af72KAUn/S1Asx6O+NagJPs0LZPjr+g7MD/Ow0S24uzZC7hV305ogv1IBPsUo
+        29h5fxXN9jgu26PkyXKezQmaoH2lC3xe/QOZYSBYjdiCmVwqP1JGRO0lDy70JWCWXsEyorBfIGNetuMd
+        3YSi+xBEaQs1gZxAJAVDbwimoeR/Ba2rNlR/tiIaX1Nb+wRystkMOqRtPdEbhXGAQUN/Hlfo87j4sw1n
+        F5twY+4etsUddVpJmaAUXhAx9SOBpx/TGPeNY9o/izSnfNzyAH8A8oZYnQBbKsEAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="ButtonFGColor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>169, 0</value>
+  </data>
+  <data name="ButtonFGColor.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="ButtonFGColor.Size" type="System.Drawing.Size, System.Drawing">
+    <value>20, 20</value>
+  </data>
+  <data name="ButtonFGColor.TabIndex" type="System.Int32, mscorlib">
+    <value>18</value>
+  </data>
+  <data name="&gt;&gt;ButtonFGColor.Name" xml:space="preserve">
+    <value>ButtonFGColor</value>
+  </data>
+  <data name="&gt;&gt;ButtonFGColor.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ButtonFGColor.Parent" xml:space="preserve">
+    <value>RTBPannel</value>
+  </data>
+  <data name="&gt;&gt;ButtonFGColor.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="ButtonBGColor.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAS
+        dAAAEnQB3mYfeAAAAoBJREFUOE91kWtIU2Ecxs/XoAtIX0rKRIgKDBSJLoshaa4vzcvYtE2YNkZe0hId
+        KiyzGyRRhkFqgWBEUFoGZkaUSZRpOSpNyba2qdPNtevZcSuhp3Pec3Z0Yg88h8N5/7/fC+dPYY34gx5Y
+        X1jwvXMaro7bWOjrQ8jnE05jEyOgwwEMVw5jLHMK5txZTClC8OTL4FYq4ZDJYCkvR5hhhGk+omDe7oQp
+        4zMsqjmYC2dgSK0HRVGk59LS4NZq8UuthjX9KPw2s0AJAuZPCO2ycQypHbCzMCfYviFBFKTHxxPBwomT
+        8FbnwlGfjMVwZFnQZfiCJ8pZPGTBd2y7sh4T8PDWDFHy8bgSnpo8+G9kInAlHbaWYl4QZALozPqBHs0M
+        eliYk+TsLCRQTcpFFO1KJO8N0mQC+5tkpO7avQjRNKixAfbGHB6ONnrrYPYY7kj2kffEzetEmPTCIbhH
+        ekGN3rfimXwa/fl86w7eIkDqFik+5dGIlElFoalCAm9DJt86CVy9baDuPZ+F9pIL+iYn6Z4DWhFY3avG
+        FMClFsr+D1s7qFdDc9Abnai8zHctMNqkhPWAtUCoHF7rU1D+II2CKjuBj6laxWFdpwe61iXUmiuh6j8j
+        fn/7KIMIliakoH0efo311ydR1ujCprgdZGj3kWLoO5YFhgkjNm6LI2clmiTAroBzRMevkXswYQaqiimU
+        3HSTmzl4tYCrbrwRL82l+GvaD4ZdoSjgYnP4IG+egfau97+CqslaKN6XY971U6BWCLhEImHUsWvNbp6H
+        us0DTcsSzppP4fS3ahSNluL8h2tYZH4L03xiBNHQIQavv7rxYDCAbks33liHEAiGhNOVAf4BkV3UdnK7
+        MxcAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="ButtonBGColor.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="ButtonBGColor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>189, 0</value>
+  </data>
+  <data name="ButtonBGColor.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="ButtonBGColor.Size" type="System.Drawing.Size, System.Drawing">
+    <value>20, 20</value>
+  </data>
+  <data name="ButtonBGColor.TabIndex" type="System.Int32, mscorlib">
+    <value>19</value>
+  </data>
+  <data name="ButtonBGColor.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>TopCenter</value>
+  </data>
+  <data name="&gt;&gt;ButtonBGColor.Name" xml:space="preserve">
+    <value>ButtonBGColor</value>
+  </data>
+  <data name="&gt;&gt;ButtonBGColor.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ButtonBGColor.Parent" xml:space="preserve">
+    <value>RTBPannel</value>
+  </data>
+  <data name="&gt;&gt;ButtonBGColor.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
   <data name="RTBPannel.Location" type="System.Drawing.Point, System.Drawing">
     <value>-1, 32</value>
   </data>
@@ -554,7 +641,7 @@
     <value>Page Tags</value>
   </data>
   <data name="pageTagsComboBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>534, 4</value>
+    <value>528, 4</value>
   </data>
   <data name="pageTagsComboBox.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 1</value>
@@ -644,7 +731,7 @@
     <value>3, 3, 3, 1</value>
   </data>
   <data name="titleTextBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>321, 20</value>
+    <value>315, 20</value>
   </data>
   <data name="titleTextBox.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>

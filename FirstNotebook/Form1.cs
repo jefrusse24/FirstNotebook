@@ -710,5 +710,35 @@ namespace FirstNotebook
         {
             System.Diagnostics.Process.Start(e.LinkText);
         }
+
+        private void ButtonFGColor_Click(object sender, EventArgs e)
+        {
+            ColorDialog colorDialog1 = new ColorDialog();
+            colorDialog1.AllowFullOpen = false;
+            colorDialog1.AnyColor = false;
+
+            if (colorDialog1.ShowDialog() == DialogResult.OK)
+            {
+                if (noteAreaTextBox.SelectionLength > 0)
+                {
+                    noteAreaTextBox.SelectionColor = colorDialog1.Color;
+                }
+            }
+        }
+
+        private void ButtonBGColor_Click(object sender, EventArgs e)
+        {
+            ColorDialog colorDialog1 = new ColorDialog();
+            colorDialog1.AllowFullOpen = false;
+            colorDialog1.AnyColor = false;
+
+            if (colorDialog1.ShowDialog() == DialogResult.OK)
+            {
+                if (noteAreaTextBox.SelectionLength > 0)
+                {
+                    noteAreaTextBox.SelectionBackColor = colorDialog1.Color;
+                }
+            }
+        }
     }
 }
