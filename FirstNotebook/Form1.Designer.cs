@@ -40,27 +40,29 @@ namespace FirstNotebook
             this.dateHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.titleHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tagsHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.noteAreaTextBox = new System.Windows.Forms.RichTextBox();
+            this.pageNumberLabel = new System.Windows.Forms.Label();
+            this.dateLabel = new System.Windows.Forms.Label();
+            this.titleTextBox = new System.Windows.Forms.TextBox();
+            this.pageTagsComboBox = new System.Windows.Forms.ComboBox();
             this.RTBPannel = new System.Windows.Forms.FlowLayoutPanel();
             this.ButtonBold = new System.Windows.Forms.Button();
             this.ButtonItalics = new System.Windows.Forms.Button();
             this.ButtonUnderline = new System.Windows.Forms.Button();
+            this.ButtonFGColor = new System.Windows.Forms.Button();
+            this.ButtonBGColor = new System.Windows.Forms.Button();
             this.ButtonBullet = new System.Windows.Forms.Button();
             this.ButtonIndent = new System.Windows.Forms.Button();
             this.ButtonOutdent = new System.Windows.Forms.Button();
             this.ButtonZoomIn = new System.Windows.Forms.Button();
             this.ButtonZoomOut = new System.Windows.Forms.Button();
-            this.ButtonFGColor = new System.Windows.Forms.Button();
-            this.pageTagsComboBox = new System.Windows.Forms.ComboBox();
-            this.dateLabel = new System.Windows.Forms.Label();
-            this.pageNumberLabel = new System.Windows.Forms.Label();
-            this.titleTextBox = new System.Windows.Forms.TextBox();
+            this.ButtonTodo = new System.Windows.Forms.Button();
+            this.ButtonDone = new System.Windows.Forms.Button();
+            this.noteAreaTextBox = new System.Windows.Forms.RichTextBox();
             this.clearButton = new System.Windows.Forms.Button();
             this.tagFilterComboBox = new System.Windows.Forms.ComboBox();
             this.searchBox = new System.Windows.Forms.TextBox();
             this.pageInfoButton = new System.Windows.Forms.Button();
             this.NewPageButton = new System.Windows.Forms.Button();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -104,13 +106,15 @@ namespace FirstNotebook
             this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.customizeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolsTodoMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolsDoneMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contentsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.indexToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.searchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ButtonBGColor = new System.Windows.Forms.Button();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -131,12 +135,12 @@ namespace FirstNotebook
             // 
             // splitContainer1.Panel2
             // 
-            this.splitContainer1.Panel2.Controls.Add(this.noteAreaTextBox);
-            this.splitContainer1.Panel2.Controls.Add(this.RTBPannel);
-            this.splitContainer1.Panel2.Controls.Add(this.pageTagsComboBox);
-            this.splitContainer1.Panel2.Controls.Add(this.dateLabel);
             this.splitContainer1.Panel2.Controls.Add(this.pageNumberLabel);
+            this.splitContainer1.Panel2.Controls.Add(this.dateLabel);
             this.splitContainer1.Panel2.Controls.Add(this.titleTextBox);
+            this.splitContainer1.Panel2.Controls.Add(this.pageTagsComboBox);
+            this.splitContainer1.Panel2.Controls.Add(this.RTBPannel);
+            this.splitContainer1.Panel2.Controls.Add(this.noteAreaTextBox);
             this.splitContainer1.TabStop = false;
             // 
             // titleListView
@@ -176,15 +180,30 @@ namespace FirstNotebook
             // 
             resources.ApplyResources(this.tagsHeader, "tagsHeader");
             // 
-            // noteAreaTextBox
+            // pageNumberLabel
             // 
-            this.noteAreaTextBox.AcceptsTab = true;
-            resources.ApplyResources(this.noteAreaTextBox, "noteAreaTextBox");
-            this.noteAreaTextBox.BackColor = System.Drawing.SystemColors.Info;
-            this.noteAreaTextBox.HideSelection = false;
-            this.noteAreaTextBox.Name = "noteAreaTextBox";
-            this.noteAreaTextBox.LinkClicked += new System.Windows.Forms.LinkClickedEventHandler(this.Link_Clicked);
-            this.noteAreaTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.NoteView_KeyUp);
+            resources.ApplyResources(this.pageNumberLabel, "pageNumberLabel");
+            this.pageNumberLabel.Name = "pageNumberLabel";
+            // 
+            // dateLabel
+            // 
+            resources.ApplyResources(this.dateLabel, "dateLabel");
+            this.dateLabel.Name = "dateLabel";
+            // 
+            // titleTextBox
+            // 
+            resources.ApplyResources(this.titleTextBox, "titleTextBox");
+            this.titleTextBox.Name = "titleTextBox";
+            this.titleTextBox.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TitleView_KeyUp);
+            // 
+            // pageTagsComboBox
+            // 
+            resources.ApplyResources(this.pageTagsComboBox, "pageTagsComboBox");
+            this.pageTagsComboBox.FormattingEnabled = true;
+            this.pageTagsComboBox.Items.AddRange(new object[] {
+            resources.GetString("pageTagsComboBox.Items")});
+            this.pageTagsComboBox.Name = "pageTagsComboBox";
+            this.pageTagsComboBox.TabStop = false;
             // 
             // RTBPannel
             // 
@@ -192,13 +211,15 @@ namespace FirstNotebook
             this.RTBPannel.Controls.Add(this.ButtonBold);
             this.RTBPannel.Controls.Add(this.ButtonItalics);
             this.RTBPannel.Controls.Add(this.ButtonUnderline);
+            this.RTBPannel.Controls.Add(this.ButtonFGColor);
+            this.RTBPannel.Controls.Add(this.ButtonBGColor);
             this.RTBPannel.Controls.Add(this.ButtonBullet);
             this.RTBPannel.Controls.Add(this.ButtonIndent);
             this.RTBPannel.Controls.Add(this.ButtonOutdent);
             this.RTBPannel.Controls.Add(this.ButtonZoomIn);
             this.RTBPannel.Controls.Add(this.ButtonZoomOut);
-            this.RTBPannel.Controls.Add(this.ButtonFGColor);
-            this.RTBPannel.Controls.Add(this.ButtonBGColor);
+            this.RTBPannel.Controls.Add(this.ButtonTodo);
+            this.RTBPannel.Controls.Add(this.ButtonDone);
             this.RTBPannel.Name = "RTBPannel";
             // 
             // ButtonBold
@@ -225,6 +246,20 @@ namespace FirstNotebook
             this.ButtonUnderline.TabStop = false;
             this.ButtonUnderline.UseVisualStyleBackColor = true;
             this.ButtonUnderline.Click += new System.EventHandler(this.FormatBaseAction);
+            // 
+            // ButtonFGColor
+            // 
+            resources.ApplyResources(this.ButtonFGColor, "ButtonFGColor");
+            this.ButtonFGColor.Name = "ButtonFGColor";
+            this.ButtonFGColor.UseVisualStyleBackColor = true;
+            this.ButtonFGColor.Click += new System.EventHandler(this.ButtonFGColor_Click);
+            // 
+            // ButtonBGColor
+            // 
+            resources.ApplyResources(this.ButtonBGColor, "ButtonBGColor");
+            this.ButtonBGColor.Name = "ButtonBGColor";
+            this.ButtonBGColor.UseVisualStyleBackColor = true;
+            this.ButtonBGColor.Click += new System.EventHandler(this.ButtonBGColor_Click);
             // 
             // ButtonBullet
             // 
@@ -266,37 +301,29 @@ namespace FirstNotebook
             this.ButtonZoomOut.UseVisualStyleBackColor = true;
             this.ButtonZoomOut.Click += new System.EventHandler(this.ButtonZoom_Click);
             // 
-            // ButtonFGColor
+            // ButtonTodo
             // 
-            resources.ApplyResources(this.ButtonFGColor, "ButtonFGColor");
-            this.ButtonFGColor.Name = "ButtonFGColor";
-            this.ButtonFGColor.UseVisualStyleBackColor = true;
-            this.ButtonFGColor.Click += new System.EventHandler(this.ButtonFGColor_Click);
+            resources.ApplyResources(this.ButtonTodo, "ButtonTodo");
+            this.ButtonTodo.Name = "ButtonTodo";
+            this.ButtonTodo.UseVisualStyleBackColor = true;
+            this.ButtonTodo.Click += new System.EventHandler(this.ButtonTodo_Click);
             // 
-            // pageTagsComboBox
+            // ButtonDone
             // 
-            resources.ApplyResources(this.pageTagsComboBox, "pageTagsComboBox");
-            this.pageTagsComboBox.FormattingEnabled = true;
-            this.pageTagsComboBox.Items.AddRange(new object[] {
-            resources.GetString("pageTagsComboBox.Items")});
-            this.pageTagsComboBox.Name = "pageTagsComboBox";
-            this.pageTagsComboBox.TabStop = false;
+            resources.ApplyResources(this.ButtonDone, "ButtonDone");
+            this.ButtonDone.Name = "ButtonDone";
+            this.ButtonDone.UseVisualStyleBackColor = true;
+            this.ButtonDone.Click += new System.EventHandler(this.ButtonDone_Click);
             // 
-            // dateLabel
+            // noteAreaTextBox
             // 
-            resources.ApplyResources(this.dateLabel, "dateLabel");
-            this.dateLabel.Name = "dateLabel";
-            // 
-            // pageNumberLabel
-            // 
-            resources.ApplyResources(this.pageNumberLabel, "pageNumberLabel");
-            this.pageNumberLabel.Name = "pageNumberLabel";
-            // 
-            // titleTextBox
-            // 
-            resources.ApplyResources(this.titleTextBox, "titleTextBox");
-            this.titleTextBox.Name = "titleTextBox";
-            this.titleTextBox.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TitleView_KeyUp);
+            this.noteAreaTextBox.AcceptsTab = true;
+            resources.ApplyResources(this.noteAreaTextBox, "noteAreaTextBox");
+            this.noteAreaTextBox.BackColor = System.Drawing.SystemColors.Info;
+            this.noteAreaTextBox.HideSelection = false;
+            this.noteAreaTextBox.Name = "noteAreaTextBox";
+            this.noteAreaTextBox.LinkClicked += new System.Windows.Forms.LinkClickedEventHandler(this.Link_Clicked);
+            this.noteAreaTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.NoteView_KeyUp);
             // 
             // clearButton
             // 
@@ -336,18 +363,6 @@ namespace FirstNotebook
             this.NewPageButton.Name = "NewPageButton";
             this.NewPageButton.UseVisualStyleBackColor = true;
             this.NewPageButton.Click += new System.EventHandler(this.NewPageButton_Click);
-            // 
-            // menuStrip1
-            // 
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fileToolStripMenuItem,
-            this.editToolStripMenuItem,
-            this.formatToolStripMenuItem,
-            this.pageToolStripMenuItem,
-            this.toolsToolStripMenuItem,
-            this.helpToolStripMenuItem});
-            resources.ApplyResources(this.menuStrip1, "menuStrip1");
-            this.menuStrip1.Name = "menuStrip1";
             // 
             // fileToolStripMenuItem
             // 
@@ -613,7 +628,9 @@ namespace FirstNotebook
             // 
             this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.customizeToolStripMenuItem,
-            this.optionsToolStripMenuItem});
+            this.optionsToolStripMenuItem,
+            this.ToolsTodoMenuItem,
+            this.ToolsDoneMenuItem});
             this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
             resources.ApplyResources(this.toolsToolStripMenuItem, "toolsToolStripMenuItem");
             // 
@@ -626,6 +643,18 @@ namespace FirstNotebook
             // 
             this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
             resources.ApplyResources(this.optionsToolStripMenuItem, "optionsToolStripMenuItem");
+            // 
+            // ToolsTodoMenuItem
+            // 
+            this.ToolsTodoMenuItem.Name = "ToolsTodoMenuItem";
+            resources.ApplyResources(this.ToolsTodoMenuItem, "ToolsTodoMenuItem");
+            this.ToolsTodoMenuItem.Click += new System.EventHandler(this.ButtonTodo_Click);
+            // 
+            // ToolsDoneMenuItem
+            // 
+            this.ToolsDoneMenuItem.Name = "ToolsDoneMenuItem";
+            resources.ApplyResources(this.ToolsDoneMenuItem, "ToolsDoneMenuItem");
+            this.ToolsDoneMenuItem.Click += new System.EventHandler(this.ButtonDone_Click);
             // 
             // helpToolStripMenuItem
             // 
@@ -664,12 +693,17 @@ namespace FirstNotebook
             resources.ApplyResources(this.aboutToolStripMenuItem, "aboutToolStripMenuItem");
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.MenuHelp_About);
             // 
-            // ButtonBGColor
+            // menuStrip1
             // 
-            resources.ApplyResources(this.ButtonBGColor, "ButtonBGColor");
-            this.ButtonBGColor.Name = "ButtonBGColor";
-            this.ButtonBGColor.UseVisualStyleBackColor = true;
-            this.ButtonBGColor.Click += new System.EventHandler(this.ButtonBGColor_Click);
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fileToolStripMenuItem,
+            this.editToolStripMenuItem,
+            this.formatToolStripMenuItem,
+            this.pageToolStripMenuItem,
+            this.toolsToolStripMenuItem,
+            this.helpToolStripMenuItem});
+            resources.ApplyResources(this.menuStrip1, "menuStrip1");
+            this.menuStrip1.Name = "menuStrip1";
             // 
             // Form1
             // 
@@ -833,36 +867,6 @@ namespace FirstNotebook
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.TextBox titleTextBox;
         private System.Windows.Forms.Label pageNumberLabel;
-        private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem newToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem openToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator;
-        private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem saveAsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripMenuItem printToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem printPreviewToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
-        private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem undoToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem redoToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
-        private System.Windows.Forms.ToolStripMenuItem cutToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem copyToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem pasteToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
-        private System.Windows.Forms.ToolStripMenuItem selectAllToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem toolsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem customizeToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem optionsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem contentsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem indexToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem searchToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
-        private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
         private System.Windows.Forms.Button NewPageButton;
         private System.Windows.Forms.ListView titleListView;
         private System.Windows.Forms.ColumnHeader pageHeader;
@@ -874,19 +878,6 @@ namespace FirstNotebook
         private TextBox searchBox;
         private ComboBox tagFilterComboBox;
         private ComboBox pageTagsComboBox;
-        private ToolStripSeparator toolStripSeparator6;
-        private ToolStripMenuItem findToolStripMenuItem;
-        private ToolStripMenuItem findNextToolStripMenuItem;
-        private ToolStripMenuItem findPreviousToolStripMenuItem;
-        private ToolStripMenuItem pageToolStripMenuItem;
-        private ToolStripMenuItem newPageToolStripMenuItem;
-        private ToolStripMenuItem pageInfoToolStripMenuItem;
-        private ToolStripMenuItem lockUnlockPageToolStripMenuItem;
-        private ToolStripMenuItem deletePageToolStripMenuItem;
-        private ToolStripSeparator toolStripSeparator7;
-        private ToolStripMenuItem previousPageToolStripMenuItem;
-        private ToolStripMenuItem nextPageToolStripMenuItem;
-        private ToolStripMenuItem syncWithDBToolStripMenuItem;
         private Button clearButton;
         private FlowLayoutPanel RTBPannel;
         private Button ButtonBold;
@@ -898,6 +889,34 @@ namespace FirstNotebook
         private Button ButtonZoomIn;
         private Button ButtonZoomOut;
         private RichTextBox noteAreaTextBox;
+        private Button ButtonFGColor;
+        private Button ButtonBGColor;
+        private Button ButtonTodo;
+        private Button ButtonDone;
+        private ToolStripMenuItem fileToolStripMenuItem;
+        private ToolStripMenuItem newToolStripMenuItem;
+        private ToolStripMenuItem openToolStripMenuItem;
+        private ToolStripSeparator toolStripSeparator;
+        private ToolStripMenuItem saveToolStripMenuItem;
+        private ToolStripMenuItem saveAsToolStripMenuItem;
+        private ToolStripSeparator toolStripSeparator1;
+        private ToolStripMenuItem printToolStripMenuItem;
+        private ToolStripMenuItem printPreviewToolStripMenuItem;
+        private ToolStripSeparator toolStripSeparator2;
+        private ToolStripMenuItem exitToolStripMenuItem;
+        private ToolStripMenuItem editToolStripMenuItem;
+        private ToolStripMenuItem undoToolStripMenuItem;
+        private ToolStripMenuItem redoToolStripMenuItem;
+        private ToolStripSeparator toolStripSeparator3;
+        private ToolStripMenuItem cutToolStripMenuItem;
+        private ToolStripMenuItem copyToolStripMenuItem;
+        private ToolStripMenuItem pasteToolStripMenuItem;
+        private ToolStripSeparator toolStripSeparator4;
+        private ToolStripMenuItem selectAllToolStripMenuItem;
+        private ToolStripSeparator toolStripSeparator6;
+        private ToolStripMenuItem findToolStripMenuItem;
+        private ToolStripMenuItem findNextToolStripMenuItem;
+        private ToolStripMenuItem findPreviousToolStripMenuItem;
         private ToolStripMenuItem formatToolStripMenuItem;
         private ToolStripMenuItem FormatBoldMenuItem;
         private ToolStripMenuItem FormatItalicsMenuItem;
@@ -905,8 +924,27 @@ namespace FirstNotebook
         private ToolStripMenuItem FormatBulletMenuItem;
         private ToolStripMenuItem FormatIndentMenuItem;
         private ToolStripMenuItem FormatOutdentMenuItem;
-        private Button ButtonFGColor;
-        private Button ButtonBGColor;
+        private ToolStripMenuItem pageToolStripMenuItem;
+        private ToolStripMenuItem newPageToolStripMenuItem;
+        private ToolStripMenuItem pageInfoToolStripMenuItem;
+        private ToolStripMenuItem lockUnlockPageToolStripMenuItem;
+        private ToolStripMenuItem deletePageToolStripMenuItem;
+        private ToolStripSeparator toolStripSeparator7;
+        private ToolStripMenuItem previousPageToolStripMenuItem;
+        private ToolStripMenuItem nextPageToolStripMenuItem;
+        private ToolStripMenuItem syncWithDBToolStripMenuItem;
+        private ToolStripMenuItem toolsToolStripMenuItem;
+        private ToolStripMenuItem customizeToolStripMenuItem;
+        private ToolStripMenuItem optionsToolStripMenuItem;
+        private ToolStripMenuItem ToolsTodoMenuItem;
+        private ToolStripMenuItem ToolsDoneMenuItem;
+        private ToolStripMenuItem helpToolStripMenuItem;
+        private ToolStripMenuItem contentsToolStripMenuItem;
+        private ToolStripMenuItem indexToolStripMenuItem;
+        private ToolStripMenuItem searchToolStripMenuItem;
+        private ToolStripSeparator toolStripSeparator5;
+        private ToolStripMenuItem aboutToolStripMenuItem;
+        private MenuStrip menuStrip1;
     }
 }
 

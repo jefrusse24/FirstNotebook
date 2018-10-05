@@ -58,3 +58,5 @@ making the experience sluggish.
 ENH0004: Add Color chooser button to change the selected text.
 Also added button to change background of selected text.
 
+2018-10-05
+Created button and menu item (and menu shortcut) to enter a TODO tag, and a DONE tag.

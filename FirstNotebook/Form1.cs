@@ -722,6 +722,7 @@ namespace FirstNotebook
                 if (noteAreaTextBox.SelectionLength > 0)
                 {
                     noteAreaTextBox.SelectionColor = colorDialog1.Color;
+                    NoteView_TextChanged();
                 }
             }
         }
@@ -737,8 +738,31 @@ namespace FirstNotebook
                 if (noteAreaTextBox.SelectionLength > 0)
                 {
                     noteAreaTextBox.SelectionBackColor = colorDialog1.Color;
+                    NoteView_TextChanged();
                 }
             }
+        }
+
+        private void ButtonTodo_Click(object sender, EventArgs e)
+        {
+            int startPos = noteAreaTextBox.SelectionStart;
+            noteAreaTextBox.SelectedText = "TODO";
+            noteAreaTextBox.Select(startPos, 4);
+            noteAreaTextBox.SelectionBackColor = Color.Violet;
+            noteAreaTextBox.Select(startPos + 4, 0);
+            noteAreaTextBox.Select();
+            NoteView_TextChanged();
+        }
+
+        private void ButtonDone_Click(object sender, EventArgs e)
+        {
+            int startPos = noteAreaTextBox.SelectionStart;
+            noteAreaTextBox.SelectedText = "DONE";
+            noteAreaTextBox.Select(startPos, 4);
+            noteAreaTextBox.SelectionBackColor = Color.LightGray;
+            noteAreaTextBox.Select(startPos + 4, 0);
+            noteAreaTextBox.Select();
+            NoteView_TextChanged();
         }
     }
 }

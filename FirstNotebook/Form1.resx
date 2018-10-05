@@ -125,6 +125,9 @@
   <data name="splitContainer1.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 51</value>
   </data>
+  <data name="splitContainer1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 35</value>
+  </data>
   <data name="splitContainer1.Orientation" type="System.Windows.Forms.Orientation, System.Windows.Forms">
     <value>Horizontal</value>
   </data>
@@ -160,7 +163,7 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="titleListView.Size" type="System.Drawing.Size, System.Drawing">
-    <value>679, 133</value>
+    <value>679, 150</value>
   </data>
   <data name="titleListView.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -189,38 +192,122 @@
   <data name="&gt;&gt;splitContainer1.Panel1.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="noteAreaTextBox.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Bottom, Left, Right</value>
+  <data name="pageNumberLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
-  <data name="noteAreaTextBox.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Calibri, 11pt</value>
+  <data name="pageNumberLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 7</value>
   </data>
-  <data name="noteAreaTextBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>-1, 55</value>
+  <data name="pageNumberLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>69, 13</value>
   </data>
-  <data name="noteAreaTextBox.ScrollBars" type="System.Windows.Forms.RichTextBoxScrollBars, System.Windows.Forms">
-    <value>Vertical</value>
+  <data name="pageNumberLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
   </data>
-  <data name="noteAreaTextBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>667, 357</value>
+  <data name="pageNumberLabel.Text" xml:space="preserve">
+    <value>PageNumber</value>
   </data>
-  <data name="noteAreaTextBox.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
+  <data name="&gt;&gt;pageNumberLabel.Name" xml:space="preserve">
+    <value>pageNumberLabel</value>
   </data>
-  <data name="noteAreaTextBox.Text" xml:space="preserve">
-    <value />
+  <data name="&gt;&gt;pageNumberLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;noteAreaTextBox.Name" xml:space="preserve">
-    <value>noteAreaTextBox</value>
-  </data>
-  <data name="&gt;&gt;noteAreaTextBox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RichTextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;noteAreaTextBox.Parent" xml:space="preserve">
+  <data name="&gt;&gt;pageNumberLabel.Parent" xml:space="preserve">
     <value>splitContainer1.Panel2</value>
   </data>
-  <data name="&gt;&gt;noteAreaTextBox.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;pageNumberLabel.ZOrder" xml:space="preserve">
     <value>0</value>
+  </data>
+  <data name="dateLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="dateLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>78, 7</value>
+  </data>
+  <data name="dateLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>125, 13</value>
+  </data>
+  <data name="dateLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="dateLabel.Text" xml:space="preserve">
+    <value>2018-05-05 10:47:20 PM</value>
+  </data>
+  <data name="&gt;&gt;dateLabel.Name" xml:space="preserve">
+    <value>dateLabel</value>
+  </data>
+  <data name="&gt;&gt;dateLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dateLabel.Parent" xml:space="preserve">
+    <value>splitContainer1.Panel2</value>
+  </data>
+  <data name="&gt;&gt;dateLabel.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="titleTextBox.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="titleTextBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>209, 4</value>
+  </data>
+  <data name="titleTextBox.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 1</value>
+  </data>
+  <data name="titleTextBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>342, 20</value>
+  </data>
+  <data name="titleTextBox.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;titleTextBox.Name" xml:space="preserve">
+    <value>titleTextBox</value>
+  </data>
+  <data name="&gt;&gt;titleTextBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;titleTextBox.Parent" xml:space="preserve">
+    <value>splitContainer1.Panel2</value>
+  </data>
+  <data name="&gt;&gt;titleTextBox.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="pageTagsComboBox.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="pageTagsComboBox.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="pageTagsComboBox.Items" xml:space="preserve">
+    <value>Page Tags</value>
+  </data>
+  <data name="pageTagsComboBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>557, 3</value>
+  </data>
+  <data name="pageTagsComboBox.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 1</value>
+  </data>
+  <data name="pageTagsComboBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>121, 21</value>
+  </data>
+  <data name="pageTagsComboBox.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="pageTagsComboBox.Text" xml:space="preserve">
+    <value>Page Tags</value>
+  </data>
+  <data name="&gt;&gt;pageTagsComboBox.Name" xml:space="preserve">
+    <value>pageTagsComboBox</value>
+  </data>
+  <data name="&gt;&gt;pageTagsComboBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;pageTagsComboBox.Parent" xml:space="preserve">
+    <value>splitContainer1.Panel2</value>
+  </data>
+  <data name="&gt;&gt;pageTagsComboBox.ZOrder" xml:space="preserve">
+    <value>3</value>
   </data>
   <data name="RTBPannel.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
@@ -342,184 +429,6 @@
   <data name="&gt;&gt;ButtonUnderline.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="ButtonBullet.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        xAAADsQBlSsOGwAAAEVJREFUOE9j+Pbt238sWB6IBYjBYAOkFz6CYxCfFIzTACcnJ4IYrwHEYuqEARY8
-        GohAvwFtYCAGjwYiNQLx////FOD/DABMag78CraUnAAAAABJRU5ErkJggg==
-</value>
-  </data>
-  <data name="ButtonBullet.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
-    <value>Center</value>
-  </data>
-  <data name="ButtonBullet.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="ButtonBullet.Location" type="System.Drawing.Point, System.Drawing">
-    <value>66, 0</value>
-  </data>
-  <data name="ButtonBullet.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 0, 0, 0</value>
-  </data>
-  <data name="ButtonBullet.Size" type="System.Drawing.Size, System.Drawing">
-    <value>20, 20</value>
-  </data>
-  <data name="ButtonBullet.TabIndex" type="System.Int32, mscorlib">
-    <value>13</value>
-  </data>
-  <data name="&gt;&gt;ButtonBullet.Name" xml:space="preserve">
-    <value>ButtonBullet</value>
-  </data>
-  <data name="&gt;&gt;ButtonBullet.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ButtonBullet.Parent" xml:space="preserve">
-    <value>RTBPannel</value>
-  </data>
-  <data name="&gt;&gt;ButtonBullet.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="ButtonIndent.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        wwAADsMBx2+oZAAAAH9JREFUOE9joBh8+/btPzEYqhwTgCSdnJzwYoIGEIOhyjHBly9fDIAK3qNrIISh
-        2iEAZkjMhH3/GYLn/AfRyIrxeglZIQhjM4SgASAN2DC6S5AxVDv5BsAwWV6AYZAc2BWkBiIMgw0gNxph
-        mPKEBJLE5jxkTNAAYjBUObUBAwMA1/M3rVjPIL4AAAAASUVORK5CYII=
-</value>
-  </data>
-  <data name="ButtonIndent.Location" type="System.Drawing.Point, System.Drawing">
-    <value>86, 0</value>
-  </data>
-  <data name="ButtonIndent.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="ButtonIndent.Size" type="System.Drawing.Size, System.Drawing">
-    <value>20, 20</value>
-  </data>
-  <data name="ButtonIndent.TabIndex" type="System.Int32, mscorlib">
-    <value>14</value>
-  </data>
-  <data name="&gt;&gt;ButtonIndent.Name" xml:space="preserve">
-    <value>ButtonIndent</value>
-  </data>
-  <data name="&gt;&gt;ButtonIndent.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ButtonIndent.Parent" xml:space="preserve">
-    <value>RTBPannel</value>
-  </data>
-  <data name="&gt;&gt;ButtonIndent.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="ButtonOutdent.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        wwAADsMBx2+oZAAAAIZJREFUOE+1kcENgDAMAzMSM3QFvgzFAMzCSnyqfouCUhESQwMSlq48YlsNpd9U
-        SqkRxO7Fw5TSI92CCGKPBxRbznmQOL6yDkzzWmlcjq8Ls54KTPiCxO9XaGEEz7u7hwrs1Ru2BK7ABwoz
-        2mhKzp+oTS/xL6EFAhCxe/EQraXpFkQQ+1cR7dlyN61E168PAAAAAElFTkSuQmCC
-</value>
-  </data>
-  <data name="ButtonOutdent.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="ButtonOutdent.Location" type="System.Drawing.Point, System.Drawing">
-    <value>106, 0</value>
-  </data>
-  <data name="ButtonOutdent.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="ButtonOutdent.Size" type="System.Drawing.Size, System.Drawing">
-    <value>20, 20</value>
-  </data>
-  <data name="ButtonOutdent.TabIndex" type="System.Int32, mscorlib">
-    <value>15</value>
-  </data>
-  <data name="&gt;&gt;ButtonOutdent.Name" xml:space="preserve">
-    <value>ButtonOutdent</value>
-  </data>
-  <data name="&gt;&gt;ButtonOutdent.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ButtonOutdent.Parent" xml:space="preserve">
-    <value>RTBPannel</value>
-  </data>
-  <data name="&gt;&gt;ButtonOutdent.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="ButtonZoomIn.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        xAAADsQBlSsOGwAAAPBJREFUOE+tkr0NgzAQhT0SIyB6qjSUKehJzQBMEYkCNmCALEEPPQVJQ3u5Z5/B
-        gEmQkic9JM73Pv8qIvrJ5iOapilkP9jkuGNfpWUvC0BT3/eU5zlFUTQ7yzJq2xagUjduBQAPBgjHcUx1
-        VdNzfM3GP+oY576bxBYJoMTMblhd7isIxrmvk9giAYxYrg1sATDGuQ8OJGokAN1gg1ujniSJ3UYoUaN/
-        reDsGcDrKxXAx1vA7HDTNHsIABCKvndQFIUGH0IsAOKi7yXqh3QIcQE+cVPAHo8gXwGQD5Km6XkA5EJw
-        TsMwnNuCKwthm7BS6g0mLibFpPOKqwAAAABJRU5ErkJggg==
-</value>
-  </data>
-  <data name="ButtonZoomIn.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="ButtonZoomIn.Location" type="System.Drawing.Point, System.Drawing">
-    <value>129, 0</value>
-  </data>
-  <data name="ButtonZoomIn.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 0, 0, 0</value>
-  </data>
-  <data name="ButtonZoomIn.Size" type="System.Drawing.Size, System.Drawing">
-    <value>20, 20</value>
-  </data>
-  <data name="ButtonZoomIn.TabIndex" type="System.Int32, mscorlib">
-    <value>16</value>
-  </data>
-  <data name="&gt;&gt;ButtonZoomIn.Name" xml:space="preserve">
-    <value>ButtonZoomIn</value>
-  </data>
-  <data name="&gt;&gt;ButtonZoomIn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ButtonZoomIn.Parent" xml:space="preserve">
-    <value>RTBPannel</value>
-  </data>
-  <data name="&gt;&gt;ButtonZoomIn.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="ButtonZoomOut.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        xAAADsQBlSsOGwAAAOpJREFUOE+tkrENgzAURD0SIyB6qiyQgp7UDMAUkSjCBgyQJdxDT0HS0P78s7/B
-        ATtBSk46JOy7Z2OsiOgn24donueUfWeT5559lsheDoDQMAxUVRVlWba4LEvSWgPUmOBWAPBkgnKe59Te
-        WnpMz8V4xzjmOXeR2ioBNFh5W/YhmOdcL7VVApiw3VDZGfOcgxOpWgnABBBUp+vOG0AqVat/7eDoGcDv
-        v1QAH/8CVoe7rttDAIAwGLoHdV0bcBTiABAPhm6iuUhRiA8IiUMJe4pBvgKgEKQoiuMAyIfgnMZxPPYJ
-        vhyEbctKqRd6YC5JHWiA+AAAAABJRU5ErkJggg==
-</value>
-  </data>
-  <data name="ButtonZoomOut.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="ButtonZoomOut.Location" type="System.Drawing.Point, System.Drawing">
-    <value>149, 0</value>
-  </data>
-  <data name="ButtonZoomOut.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="ButtonZoomOut.Size" type="System.Drawing.Size, System.Drawing">
-    <value>20, 20</value>
-  </data>
-  <data name="ButtonZoomOut.TabIndex" type="System.Int32, mscorlib">
-    <value>17</value>
-  </data>
-  <data name="&gt;&gt;ButtonZoomOut.Name" xml:space="preserve">
-    <value>ButtonZoomOut</value>
-  </data>
-  <data name="&gt;&gt;ButtonZoomOut.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ButtonZoomOut.Parent" xml:space="preserve">
-    <value>RTBPannel</value>
-  </data>
-  <data name="&gt;&gt;ButtonZoomOut.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
   <data name="ButtonFGColor.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAS
@@ -537,7 +446,7 @@
 </value>
   </data>
   <data name="ButtonFGColor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>169, 0</value>
+    <value>63, 0</value>
   </data>
   <data name="ButtonFGColor.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -558,7 +467,7 @@
     <value>RTBPannel</value>
   </data>
   <data name="&gt;&gt;ButtonFGColor.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>3</value>
   </data>
   <data name="ButtonBGColor.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -581,7 +490,7 @@
     <value>NoControl</value>
   </data>
   <data name="ButtonBGColor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>189, 0</value>
+    <value>83, 0</value>
   </data>
   <data name="ButtonBGColor.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -605,7 +514,248 @@
     <value>RTBPannel</value>
   </data>
   <data name="&gt;&gt;ButtonBGColor.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="ButtonBullet.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        xAAADsQBlSsOGwAAAEVJREFUOE9j+Pbt238sWB6IBYjBYAOkFz6CYxCfFIzTACcnJ4IYrwHEYuqEARY8
+        GohAvwFtYCAGjwYiNQLx////FOD/DABMag78CraUnAAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="ButtonBullet.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+    <value>Center</value>
+  </data>
+  <data name="ButtonBullet.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="ButtonBullet.Location" type="System.Drawing.Point, System.Drawing">
+    <value>108, 0</value>
+  </data>
+  <data name="ButtonBullet.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>5, 0, 0, 0</value>
+  </data>
+  <data name="ButtonBullet.Size" type="System.Drawing.Size, System.Drawing">
+    <value>20, 20</value>
+  </data>
+  <data name="ButtonBullet.TabIndex" type="System.Int32, mscorlib">
+    <value>13</value>
+  </data>
+  <data name="&gt;&gt;ButtonBullet.Name" xml:space="preserve">
+    <value>ButtonBullet</value>
+  </data>
+  <data name="&gt;&gt;ButtonBullet.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ButtonBullet.Parent" xml:space="preserve">
+    <value>RTBPannel</value>
+  </data>
+  <data name="&gt;&gt;ButtonBullet.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="ButtonIndent.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        wwAADsMBx2+oZAAAAH9JREFUOE9joBh8+/btPzEYqhwTgCSdnJzwYoIGEIOhyjHBly9fDIAK3qNrIISh
+        2iEAZkjMhH3/GYLn/AfRyIrxeglZIQhjM4SgASAN2DC6S5AxVDv5BsAwWV6AYZAc2BWkBiIMgw0gNxph
+        mPKEBJLE5jxkTNAAYjBUObUBAwMA1/M3rVjPIL4AAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="ButtonIndent.Location" type="System.Drawing.Point, System.Drawing">
+    <value>128, 0</value>
+  </data>
+  <data name="ButtonIndent.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="ButtonIndent.Size" type="System.Drawing.Size, System.Drawing">
+    <value>20, 20</value>
+  </data>
+  <data name="ButtonIndent.TabIndex" type="System.Int32, mscorlib">
+    <value>14</value>
+  </data>
+  <data name="&gt;&gt;ButtonIndent.Name" xml:space="preserve">
+    <value>ButtonIndent</value>
+  </data>
+  <data name="&gt;&gt;ButtonIndent.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ButtonIndent.Parent" xml:space="preserve">
+    <value>RTBPannel</value>
+  </data>
+  <data name="&gt;&gt;ButtonIndent.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="ButtonOutdent.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        wwAADsMBx2+oZAAAAIZJREFUOE+1kcENgDAMAzMSM3QFvgzFAMzCSnyqfouCUhESQwMSlq48YlsNpd9U
+        SqkRxO7Fw5TSI92CCGKPBxRbznmQOL6yDkzzWmlcjq8Ls54KTPiCxO9XaGEEz7u7hwrs1Ru2BK7ABwoz
+        2mhKzp+oTS/xL6EFAhCxe/EQraXpFkQQ+1cR7dlyN61E168PAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="ButtonOutdent.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="ButtonOutdent.Location" type="System.Drawing.Point, System.Drawing">
+    <value>148, 0</value>
+  </data>
+  <data name="ButtonOutdent.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="ButtonOutdent.Size" type="System.Drawing.Size, System.Drawing">
+    <value>20, 20</value>
+  </data>
+  <data name="ButtonOutdent.TabIndex" type="System.Int32, mscorlib">
+    <value>15</value>
+  </data>
+  <data name="&gt;&gt;ButtonOutdent.Name" xml:space="preserve">
+    <value>ButtonOutdent</value>
+  </data>
+  <data name="&gt;&gt;ButtonOutdent.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ButtonOutdent.Parent" xml:space="preserve">
+    <value>RTBPannel</value>
+  </data>
+  <data name="&gt;&gt;ButtonOutdent.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="ButtonZoomIn.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        xAAADsQBlSsOGwAAAPBJREFUOE+tkr0NgzAQhT0SIyB6qjSUKehJzQBMEYkCNmCALEEPPQVJQ3u5Z5/B
+        gEmQkic9JM73Pv8qIvrJ5iOapilkP9jkuGNfpWUvC0BT3/eU5zlFUTQ7yzJq2xagUjduBQAPBgjHcUx1
+        VdNzfM3GP+oY576bxBYJoMTMblhd7isIxrmvk9giAYxYrg1sATDGuQ8OJGokAN1gg1ujniSJ3UYoUaN/
+        reDsGcDrKxXAx1vA7HDTNHsIABCKvndQFIUGH0IsAOKi7yXqh3QIcQE+cVPAHo8gXwGQD5Km6XkA5EJw
+        TsMwnNuCKwthm7BS6g0mLibFpPOKqwAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="ButtonZoomIn.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="ButtonZoomIn.Location" type="System.Drawing.Point, System.Drawing">
+    <value>173, 0</value>
+  </data>
+  <data name="ButtonZoomIn.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>5, 0, 0, 0</value>
+  </data>
+  <data name="ButtonZoomIn.Size" type="System.Drawing.Size, System.Drawing">
+    <value>20, 20</value>
+  </data>
+  <data name="ButtonZoomIn.TabIndex" type="System.Int32, mscorlib">
+    <value>16</value>
+  </data>
+  <data name="&gt;&gt;ButtonZoomIn.Name" xml:space="preserve">
+    <value>ButtonZoomIn</value>
+  </data>
+  <data name="&gt;&gt;ButtonZoomIn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ButtonZoomIn.Parent" xml:space="preserve">
+    <value>RTBPannel</value>
+  </data>
+  <data name="&gt;&gt;ButtonZoomIn.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="ButtonZoomOut.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        xAAADsQBlSsOGwAAAOpJREFUOE+tkrENgzAURD0SIyB6qiyQgp7UDMAUkSjCBgyQJdxDT0HS0P78s7/B
+        ATtBSk46JOy7Z2OsiOgn24donueUfWeT5559lsheDoDQMAxUVRVlWba4LEvSWgPUmOBWAPBkgnKe59Te
+        WnpMz8V4xzjmOXeR2ioBNFh5W/YhmOdcL7VVApiw3VDZGfOcgxOpWgnABBBUp+vOG0AqVat/7eDoGcDv
+        v1QAH/8CVoe7rttDAIAwGLoHdV0bcBTiABAPhm6iuUhRiA8IiUMJe4pBvgKgEKQoiuMAyIfgnMZxPPYJ
+        vhyEbctKqRd6YC5JHWiA+AAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="ButtonZoomOut.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="ButtonZoomOut.Location" type="System.Drawing.Point, System.Drawing">
+    <value>193, 0</value>
+  </data>
+  <data name="ButtonZoomOut.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="ButtonZoomOut.Size" type="System.Drawing.Size, System.Drawing">
+    <value>20, 20</value>
+  </data>
+  <data name="ButtonZoomOut.TabIndex" type="System.Int32, mscorlib">
+    <value>17</value>
+  </data>
+  <data name="&gt;&gt;ButtonZoomOut.Name" xml:space="preserve">
+    <value>ButtonZoomOut</value>
+  </data>
+  <data name="&gt;&gt;ButtonZoomOut.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ButtonZoomOut.Parent" xml:space="preserve">
+    <value>RTBPannel</value>
+  </data>
+  <data name="&gt;&gt;ButtonZoomOut.ZOrder" xml:space="preserve">
     <value>9</value>
+  </data>
+  <data name="ButtonTodo.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
+  </data>
+  <data name="ButtonTodo.Location" type="System.Drawing.Point, System.Drawing">
+    <value>218, 0</value>
+  </data>
+  <data name="ButtonTodo.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>5, 0, 0, 0</value>
+  </data>
+  <data name="ButtonTodo.Size" type="System.Drawing.Size, System.Drawing">
+    <value>20, 20</value>
+  </data>
+  <data name="ButtonTodo.TabIndex" type="System.Int32, mscorlib">
+    <value>20</value>
+  </data>
+  <data name="ButtonTodo.Text" xml:space="preserve">
+    <value>T</value>
+  </data>
+  <data name="&gt;&gt;ButtonTodo.Name" xml:space="preserve">
+    <value>ButtonTodo</value>
+  </data>
+  <data name="&gt;&gt;ButtonTodo.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ButtonTodo.Parent" xml:space="preserve">
+    <value>RTBPannel</value>
+  </data>
+  <data name="&gt;&gt;ButtonTodo.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="ButtonDone.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
+  </data>
+  <data name="ButtonDone.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="ButtonDone.Location" type="System.Drawing.Point, System.Drawing">
+    <value>238, 0</value>
+  </data>
+  <data name="ButtonDone.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="ButtonDone.Size" type="System.Drawing.Size, System.Drawing">
+    <value>20, 20</value>
+  </data>
+  <data name="ButtonDone.TabIndex" type="System.Int32, mscorlib">
+    <value>21</value>
+  </data>
+  <data name="ButtonDone.Text" xml:space="preserve">
+    <value>D</value>
+  </data>
+  <data name="&gt;&gt;ButtonDone.Name" xml:space="preserve">
+    <value>ButtonDone</value>
+  </data>
+  <data name="&gt;&gt;ButtonDone.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ButtonDone.Parent" xml:space="preserve">
+    <value>RTBPannel</value>
+  </data>
+  <data name="&gt;&gt;ButtonDone.ZOrder" xml:space="preserve">
+    <value>11</value>
   </data>
   <data name="RTBPannel.Location" type="System.Drawing.Point, System.Drawing">
     <value>-1, 32</value>
@@ -629,123 +779,42 @@
     <value>splitContainer1.Panel2</value>
   </data>
   <data name="&gt;&gt;RTBPannel.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="pageTagsComboBox.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Right</value>
-  </data>
-  <data name="pageTagsComboBox.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="pageTagsComboBox.Items" xml:space="preserve">
-    <value>Page Tags</value>
-  </data>
-  <data name="pageTagsComboBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>528, 4</value>
-  </data>
-  <data name="pageTagsComboBox.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 1</value>
-  </data>
-  <data name="pageTagsComboBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>121, 21</value>
-  </data>
-  <data name="pageTagsComboBox.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
-  <data name="pageTagsComboBox.Text" xml:space="preserve">
-    <value>Page Tags</value>
-  </data>
-  <data name="&gt;&gt;pageTagsComboBox.Name" xml:space="preserve">
-    <value>pageTagsComboBox</value>
-  </data>
-  <data name="&gt;&gt;pageTagsComboBox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;pageTagsComboBox.Parent" xml:space="preserve">
-    <value>splitContainer1.Panel2</value>
-  </data>
-  <data name="&gt;&gt;pageTagsComboBox.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="dateLabel.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="dateLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>78, 7</value>
-  </data>
-  <data name="dateLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>125, 13</value>
-  </data>
-  <data name="dateLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="dateLabel.Text" xml:space="preserve">
-    <value>2018-05-05 10:47:20 PM</value>
-  </data>
-  <data name="&gt;&gt;dateLabel.Name" xml:space="preserve">
-    <value>dateLabel</value>
-  </data>
-  <data name="&gt;&gt;dateLabel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;dateLabel.Parent" xml:space="preserve">
-    <value>splitContainer1.Panel2</value>
-  </data>
-  <data name="&gt;&gt;dateLabel.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="pageNumberLabel.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="pageNumberLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 7</value>
-  </data>
-  <data name="pageNumberLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>69, 13</value>
-  </data>
-  <data name="pageNumberLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="pageNumberLabel.Text" xml:space="preserve">
-    <value>PageNumber</value>
-  </data>
-  <data name="&gt;&gt;pageNumberLabel.Name" xml:space="preserve">
-    <value>pageNumberLabel</value>
-  </data>
-  <data name="&gt;&gt;pageNumberLabel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;pageNumberLabel.Parent" xml:space="preserve">
-    <value>splitContainer1.Panel2</value>
-  </data>
-  <data name="&gt;&gt;pageNumberLabel.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
-  <data name="titleTextBox.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Left, Right</value>
+  <data name="noteAreaTextBox.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
   </data>
-  <data name="titleTextBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>209, 4</value>
+  <data name="noteAreaTextBox.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Calibri, 11pt</value>
   </data>
-  <data name="titleTextBox.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 1</value>
+  <data name="noteAreaTextBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 56</value>
   </data>
-  <data name="titleTextBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>315, 20</value>
+  <data name="noteAreaTextBox.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 0</value>
   </data>
-  <data name="titleTextBox.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
+  <data name="noteAreaTextBox.ScrollBars" type="System.Windows.Forms.RichTextBoxScrollBars, System.Windows.Forms">
+    <value>Vertical</value>
   </data>
-  <data name="&gt;&gt;titleTextBox.Name" xml:space="preserve">
-    <value>titleTextBox</value>
+  <data name="noteAreaTextBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>677, 427</value>
   </data>
-  <data name="&gt;&gt;titleTextBox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="noteAreaTextBox.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
   </data>
-  <data name="&gt;&gt;titleTextBox.Parent" xml:space="preserve">
+  <data name="noteAreaTextBox.Text" xml:space="preserve">
+    <value />
+  </data>
+  <data name="&gt;&gt;noteAreaTextBox.Name" xml:space="preserve">
+    <value>noteAreaTextBox</value>
+  </data>
+  <data name="&gt;&gt;noteAreaTextBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RichTextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;noteAreaTextBox.Parent" xml:space="preserve">
     <value>splitContainer1.Panel2</value>
   </data>
-  <data name="&gt;&gt;titleTextBox.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;noteAreaTextBox.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
   <data name="&gt;&gt;splitContainer1.Panel2.Name" xml:space="preserve">
@@ -761,10 +830,10 @@
     <value>1</value>
   </data>
   <data name="splitContainer1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>681, 570</value>
+    <value>681, 643</value>
   </data>
   <data name="splitContainer1.SplitterDistance" type="System.Int32, mscorlib">
-    <value>135</value>
+    <value>152</value>
   </data>
   <data name="splitContainer1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -916,9 +985,6 @@
   <data name="&gt;&gt;NewPageButton.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
-  <metadata name="menuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
   <data name="newToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
@@ -1341,16 +1407,34 @@
     <value>Page</value>
   </data>
   <data name="customizeToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>130, 22</value>
+    <value>191, 22</value>
   </data>
   <data name="customizeToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Customize</value>
   </data>
   <data name="optionsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>130, 22</value>
+    <value>191, 22</value>
   </data>
   <data name="optionsToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Options</value>
+  </data>
+  <data name="ToolsTodoMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
+    <value>Ctrl+T</value>
+  </data>
+  <data name="ToolsTodoMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>191, 22</value>
+  </data>
+  <data name="ToolsTodoMenuItem.Text" xml:space="preserve">
+    <value>Add Todo Tag</value>
+  </data>
+  <data name="ToolsDoneMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
+    <value>Ctrl+D</value>
+  </data>
+  <data name="ToolsDoneMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>191, 22</value>
+  </data>
+  <data name="ToolsDoneMenuItem.Text" xml:space="preserve">
+    <value>Add Done Tag</value>
   </data>
   <data name="toolsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>47, 20</value>
@@ -1391,6 +1475,9 @@
   <data name="helpToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Help</value>
   </data>
+  <metadata name="menuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
   <data name="menuStrip1.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
@@ -1710,6 +1797,18 @@
     <value>optionsToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;optionsToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ToolsTodoMenuItem.Name" xml:space="preserve">
+    <value>ToolsTodoMenuItem</value>
+  </data>
+  <data name="&gt;&gt;ToolsTodoMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ToolsDoneMenuItem.Name" xml:space="preserve">
+    <value>ToolsDoneMenuItem</value>
+  </data>
+  <data name="&gt;&gt;ToolsDoneMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;helpToolStripMenuItem.Name" xml:space="preserve">
