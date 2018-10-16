@@ -12,7 +12,7 @@ namespace FirstNotebook
     {
         public const int Indent = 25;
         public const string ApplicationName = "jNotebook";
-        public const string Version = "1.2";
+        public const string Version = "1.3";
         private Page _currentPage;
         private bool _pageIsDirty;
         private Book _book;
@@ -133,8 +133,7 @@ namespace FirstNotebook
         private void TitleView_KeyUp(object sender, EventArgs e)
         {
             NoteView_TextChanged();
-            _book.Dirty = true;
-            titleListView.Items[_currentPage.PageNumber - 1].SubItems[2].Text = titleTextBox.Text;
+            titleListView.Items[_lastSelectedRow].SubItems[2].Text = titleTextBox.Text;
         }
 
         private void PrepareForNewPage()
@@ -176,12 +175,6 @@ namespace FirstNotebook
                 }
 
                 _currentPage.DerivedTitle = title;
-            }
-
-            // Update ListView - If it is still visible (which may not be if you are begining to search).
-            if (titleListView.Items.Count > _lastSelectedRow)
-            {
-                titleListView.Items[_lastSelectedRow].SubItems[2].Text = title;
             }
 
             _book.Dirty = true;
@@ -468,12 +461,18 @@ namespace FirstNotebook
 
             noteAreaTextBox.Enabled = true;
 
+            if (_pageIsDirty)
+            {
+                SavePageChanges();
+            }
+
             if (string.IsNullOrEmpty(searchBox.Text))
             {
                 // Clear the searching
                 _searchToken = null;
                 _searchEngine.CancelFindMatchingPages();
                 _activeView = _book;
+
                 RebuildTitleList();
 
                 if (_activeView.PageCount > 0)

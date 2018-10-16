@@ -3,7 +3,6 @@
 
 Bug0001: When closing the application and there have been modifications, when you click save, it should then close the application. If you hit cancel, it should not close.
 Bug0012: Filename does not necessarily match book name.  If you use explorer and copy a notebook, then open that copy, it will show the name of the original book, and not the filename.
-Bug0013:
 Bug0014:
 Bug0015:
 Bug0016:
@@ -47,7 +46,9 @@ Bug0011: When opening up a document for the first time, the notice the book is d
 Fixed.  THe issue was that it thought the book was dirty after opening it up.
 
 2018-09-12
+*********************************************************
 Released version 1.1  (Sent to Mike Silva)
+*********************************************************
 Started work to make search non-blocking (ENH0005).  Using publish/subscribe/cancelToken/tasks.
 
 2018-09-19
@@ -60,3 +61,13 @@ Also added button to change background of selected text.
 
 2018-10-05
 Created button and menu item (and menu shortcut) to enter a TODO tag, and a DONE tag.
+
+2018-10-08
+Page Lock: Thoughts - Passkey Hash - Take the password, and generate a hash of it.  Use the password to encrypt the page.  If you ask for the password, and it generates the same hash, then you can assume the password is correct and decrypt the page with the password.
+
+2018-10-16
+Bug0013: If in a search, and you change the title, this will throw an exception.
+Was trying to set the value of an index when I clicked the "Clear" button.  This was using the page number as an index.  This is not good during a search.  This uncovered another problem where the title was not getting set properly in the titleListView. The list was getting generated, before the saving of the page causing the list not to reflect the new name of the page.
+*********************************************************
+Publish Version 1.3.0
+*********************************************************
