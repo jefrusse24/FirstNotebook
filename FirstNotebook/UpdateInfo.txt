@@ -3,15 +3,16 @@
 
 Bug0001: When closing the application and there have been modifications, when you click save, it should then close the application. If you hit cancel, it should not close.
 Bug0012: Filename does not necessarily match book name.  If you use explorer and copy a notebook, then open that copy, it will show the name of the original book, and not the filename.
-Bug0014:
-Bug0015:
-Bug0016:
+Bug0018:
+Bug0019:
+
 
 ENH0001: Add page tag functionality.
+    Under Tag Filters:  List the tags, then list clear tags, no tags, new tag..., then list edit tags.
+	Under the Page Tags: have a drop down that shows all the tags, with checkmarks next to the tags associated with this page.  allow user to select any of the tags, and ctrl click to select multiple tags.
 ENH0002: Add Page Lock Functionality.  Use password in ENH0003 or seperate password.
 ENH0003: Add Preferences - Page Color, Host, username, password.
-ENH0006:
-ENH0007:
+ENH0007: While searching, return partial results every couple seconds until the entire results are done.
 ENH0008:
 
 
@@ -71,3 +72,22 @@ Was trying to set the value of an index when I clicked the "Clear" button.  This
 *********************************************************
 Publish Version 1.3.0
 *********************************************************
+
+2018-10-22
+Bug0014: TitleListView is not being updated when you add/change content of a page.
+Working on: ENH0006: When in search mode, make the text area read only.  Switch to edit mode at some point.  When making the textarea focused, re-draw the textarea to remove any search hilighting.  - Need to handle "Find Next" - while textarea is focused.
+
+2018-10-23
+ENH0006: When in search mode, make the text area read only.  Switch to edit mode at some point.  When making the textarea focused, re-draw the textarea to remove any search hilighting.
+Finished ENH0006. 
+
+2019-01-25
+Bug0015: Search finds a text string with an index after the end of the page.
+Placed a try-catch around the section that attempts to hilight the text.  Also created a new class "ErrorHandler" that can be called when we want to inform the user of an error that was caught, and handled.
+
+2019-07-21
+Bug0016: Text is lost when switching out of the program.  If you have searched for something and still have the search token in the search bar, and then type text into the window, the text does not stay if you switch out of the application by using the hot key <Ctrl>-<tab>.  Very strange.
+Fixed this by clearing the _searchToken when you focus in the text area.  It just needs to be set again if a search next is called.
+Bug0017: File Save/ File Open does not open the saved file successully (2019-07-21)
+Fixed this by not reading the pagetags until AFTER the pages are deserialized.  Strangely the pages get deserialized after the book is deserialized.
+

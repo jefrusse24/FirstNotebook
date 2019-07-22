@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Media;
@@ -12,14 +13,14 @@ namespace FirstNotebook
     {
         public const int Indent = 25;
         public const string ApplicationName = "jNotebook";
-        public const string Version = "1.3";
+        public const string Version = "1.4";
         private Page _currentPage;
         private bool _pageIsDirty;
         private Book _book;
         private Book _activeView;  // Usually same as _book, unless a search
         private string _searchToken;
         private SearchRecord _searchRecord;
-        private int _lastSelectedRow = 0;  // Keep track of currently selected row in listview - used to update title if the selected row changes.
+        private int _lastSelectedRow;  // Keep track of currently selected row in listview - used to update title if the selected row changes.
         private SearchEngine _searchEngine;
 
         public Form1()
@@ -30,7 +31,7 @@ namespace FirstNotebook
             _searchEngine = new SearchEngine(_book, eve);
             eve.Subscribe<FindMatchingPagesEvent>(ReceivePageMatches);
 
-            Text = $"{ApplicationName} - {Path.GetFileName(_book.FileName)}";
+            Text = $@"{ApplicationName} - {Path.GetFileName(_book.FileName)}";
             _currentPage = _book.GetNewPage();
             _pageIsDirty = false;
             _activeView = _book;
@@ -45,6 +46,15 @@ namespace FirstNotebook
             pageNumberLabel.Text = "Page " + _currentPage.PageNumber;
             dateLabel.Text = _currentPage.CreatedDate.ToString("yyyy-MM-dd h:mm tt");
             titleListView.Items[_currentPage.PageNumber - 1].Selected = true;
+
+            // LOOK AT THIS FOR the tag drop down.
+            //https://social.msdn.microsoft.com/Forums/en-US/73ccbbee-0f77-48bb-9189-0af00c9a339f/combo-box-item-separator?forum=winappswithcsharp
+            var dataSource = new List<string>();
+            dataSource.Add("Tag Filter");
+            dataSource.Add("Tag1");
+            dataSource.Add("Tag2");
+            tagFilterComboBox.DataSource = dataSource;
+            //tagFilterComboBox.DataSource = _book.PageTags;
         }
 
         /**********************************************************************************
@@ -82,7 +92,7 @@ namespace FirstNotebook
                     var nextLastRow = titleListView.SelectedItems[0].Index;
                     if (nextLastRow > _activeView.PageCount)
                     {
-                        // ERROR.  This shoudd not happen
+                        // ERROR.  This should not happen
                         MessageBox.Show("Hmmm", $"Not that many visible pages. {nextLastRow} > {_activeView.PageCount}. ", MessageBoxButtons.OK);
                         return;
                     }
@@ -126,7 +136,7 @@ namespace FirstNotebook
             if (_book.Dirty == false)
             {
                 _book.Dirty = true;
-                Text = $"{ApplicationName} - {Path.GetFileName(_book.FileName)} *";
+                Text = $@"{ApplicationName} - {Path.GetFileName(_book.FileName)} *";
             }
         }
 
@@ -163,7 +173,7 @@ namespace FirstNotebook
 
         private void SavePageChanges()
         {
-            string title = titleTextBox.Text;
+            var title = titleTextBox.Text;
             _currentPage.PageTitle = title;
             _currentPage.PageData = noteAreaTextBox.Rtf;
             if (string.IsNullOrEmpty(titleTextBox.Text))
@@ -175,6 +185,11 @@ namespace FirstNotebook
                 }
 
                 _currentPage.DerivedTitle = title;
+            }
+
+            if (titleListView.Items.Count > _lastSelectedRow)
+            {
+                titleListView.Items[_lastSelectedRow].SubItems[2].Text = title;
             }
 
             _book.Dirty = true;
@@ -205,7 +220,7 @@ namespace FirstNotebook
         {
             titleListView.Items.Clear();
 
-            foreach (Page page in _activeView.GetPages())
+            foreach (var page in _activeView.GetPages())
             {
                 ListViewItem listViewItem = new ListViewItem($"{page.PageNumber}");
                 listViewItem.SubItems.Add(page.CreatedDate.ToLocalTime().ToString());
@@ -330,6 +345,9 @@ namespace FirstNotebook
                 return;
             }
 
+            _searchToken = searchBox.Text;
+            searchBox.Focus();
+
             SearchRecord nextMatch = FindNextMatch(_searchRecord);
 
             if (nextMatch == null)
@@ -339,6 +357,13 @@ namespace FirstNotebook
             }
             else
             {
+                if (nextMatch.Location >= noteAreaTextBox.TextLength)
+                {
+                    SystemSounds.Beep.Play();
+                    ErrorHandler.Error(GetType(), "MenuEdit_FindNext", "Search Location is after the end of the text.", null);
+                    return;
+                }
+
                 _searchRecord = nextMatch;
                 HiliteSearch();
             }
@@ -455,6 +480,18 @@ namespace FirstNotebook
             }
         }
 
+        private void NoteView_Focus(object sender, EventArgs e)
+        {
+            // if searchtoken contins simething, then when we focus in the noteview, we need to redraw it.
+            // This helps fix the hilighted formatting that is done with the find.
+            if (!string.IsNullOrEmpty(_searchToken))
+            {
+                // redraw page with no search hilighting
+                UpdateViewWithPage(_currentPage);
+                _searchToken = string.Empty;
+            }
+        }
+
         private void SearchTextBox_Change(object sender, EventArgs e)
         {
             _searchRecord.Clear();
@@ -550,10 +587,17 @@ namespace FirstNotebook
             }
             else
             {
-                noteAreaTextBox.Find(_searchRecord.Token, _searchRecord.Location, noteAreaTextBox.TextLength, RichTextBoxFinds.None);
-                noteAreaTextBox.SelectionBackColor = Color.Yellow;
-                noteAreaTextBox.SelectionStart = _searchRecord.Location;
-                noteAreaTextBox.ScrollToCaret();
+                try
+                {
+                    noteAreaTextBox.Find(_searchRecord.Token, _searchRecord.Location, noteAreaTextBox.TextLength, RichTextBoxFinds.None);
+                    noteAreaTextBox.SelectionBackColor = Color.Yellow;
+                    noteAreaTextBox.SelectionStart = _searchRecord.Location;
+                    noteAreaTextBox.ScrollToCaret();
+                }
+                catch (Exception e)
+                {
+                    ErrorHandler.Error(GetType(), "HiliteSearch", "Problem in with hilighting the desired text.", e);
+                }
             }
         }
 
@@ -745,6 +789,11 @@ namespace FirstNotebook
         private void ButtonTodo_Click(object sender, EventArgs e)
         {
             int startPos = noteAreaTextBox.SelectionStart;
+            if (noteAreaTextBox.TextLength == startPos)
+            {
+                // BUG: If at the end of text, your cursor is left in the formatting of the TODO tag.
+            }
+
             noteAreaTextBox.SelectedText = "TODO";
             noteAreaTextBox.Select(startPos, 4);
             noteAreaTextBox.SelectionBackColor = Color.Violet;

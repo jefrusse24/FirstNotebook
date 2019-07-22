@@ -323,6 +323,7 @@ namespace FirstNotebook
             this.noteAreaTextBox.HideSelection = false;
             this.noteAreaTextBox.Name = "noteAreaTextBox";
             this.noteAreaTextBox.LinkClicked += new System.Windows.Forms.LinkClickedEventHandler(this.Link_Clicked);
+            this.noteAreaTextBox.GotFocus += new System.EventHandler(this.NoteView_Focus);
             this.noteAreaTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.NoteView_KeyUp);
             // 
             // clearButton
@@ -335,6 +336,7 @@ namespace FirstNotebook
             // tagFilterComboBox
             // 
             resources.ApplyResources(this.tagFilterComboBox, "tagFilterComboBox");
+            this.tagFilterComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.tagFilterComboBox.FormattingEnabled = true;
             this.tagFilterComboBox.Items.AddRange(new object[] {
             resources.GetString("tagFilterComboBox.Items")});
@@ -695,6 +697,7 @@ namespace FirstNotebook
             // 
             // menuStrip1
             // 
+            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
             this.editToolStripMenuItem,

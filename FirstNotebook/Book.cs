@@ -8,6 +8,7 @@ namespace FirstNotebook
     public class Book : ISerializable
     {
         private List<Page> _pages;
+        private List<string> _pageTags;
 
         public Book()
         {
@@ -15,6 +16,7 @@ namespace FirstNotebook
             FileName = "Untitled";
             Version = 1;
             Dirty = false;
+            _pageTags = null;
         }
 
         public Book(SerializationInfo info, StreamingContext context)
@@ -35,6 +37,31 @@ namespace FirstNotebook
 
         // Flag if there have been any modifications to the book since last save.
         public bool Dirty { get; set; } = false;
+
+        public List<string> PageTags
+        {
+            get
+            {
+                if (_pageTags == null)
+                {
+                    _pageTags = GetPageTagsInBook();
+                }
+
+                return _pageTags;
+            }
+        }
+
+        public List<string> GetPageTagsInBook()
+        {
+            var tags = new List<string>();
+
+            foreach (Page page in _pages)
+            {
+                tags.AddRange(page.GetPageTags());
+            }
+
+            return tags;
+        }
 
         public int PageCount
         {
