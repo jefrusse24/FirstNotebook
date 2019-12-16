@@ -3,8 +3,9 @@
 
 Bug0001: When closing the application and there have been modifications, when you click save, it should then close the application. If you hit cancel, it should not close.
 Bug0012: Filename does not necessarily match book name.  If you use explorer and copy a notebook, then open that copy, it will show the name of the original book, and not the filename.
-Bug0018:
-Bug0019:
+Bug0019: Exception when trying to switch pages.  Not sure why, but the UpdateViewWithPage was called with a null page.  That is because TitleList_SelectionChanged LastSelectedRow returned a row that we did not like.  A search had been implemented, so not all the pages in the book were in the TitleList. 
+Bug0020: When you click on the Menu Item File -> New..., and it createst a new document, the title of the window does not remove the filename of the last document.
+Bug0022:
 
 
 ENH0001: Add page tag functionality.
@@ -91,3 +92,11 @@ Fixed this by clearing the _searchToken when you focus in the text area.  It jus
 Bug0017: File Save/ File Open does not open the saved file successully (2019-07-21)
 Fixed this by not reading the pagetags until AFTER the pages are deserialized.  Strangely the pages get deserialized after the book is deserialized.
 
+2019-08-19
+Bug0018: Lost the Scroll bar to the RichTextBox
+Put the RichTextBox inside a Panel.  Then make the RichTextBox fill the entire panel.  The panel control works better inside the split control.
+
+2019-12-15
+Bug0021: Can not delete a page.  The delete menu item does nothing.
+Fixed/Implemented.
+Also change a lot of types to "var".

@@ -26,7 +26,7 @@ namespace FirstNotebook
         public Form1()
         {
             InitializeComponent();
-            EventAggregator eve = new EventAggregator();
+            var eve = new EventAggregator();
             _book = new Book();
             _searchEngine = new SearchEngine(_book, eve);
             eve.Subscribe<FindMatchingPagesEvent>(ReceivePageMatches);
@@ -37,7 +37,7 @@ namespace FirstNotebook
             _activeView = _book;
             _searchRecord = new SearchRecord();
 
-            ListViewItem listViewItem = new ListViewItem($"{_currentPage.PageNumber}");
+            var listViewItem = new ListViewItem($"{_currentPage.PageNumber}");
             listViewItem.SubItems.Add(DateTime.Now.ToLocalTime().ToString());
             listViewItem.SubItems.Add(_currentPage.GetPageTitle());
             titleListView.Items.Add(listViewItem);
@@ -49,10 +49,12 @@ namespace FirstNotebook
 
             // LOOK AT THIS FOR the tag drop down.
             //https://social.msdn.microsoft.com/Forums/en-US/73ccbbee-0f77-48bb-9189-0af00c9a339f/combo-box-item-separator?forum=winappswithcsharp
-            var dataSource = new List<string>();
-            dataSource.Add("Tag Filter");
-            dataSource.Add("Tag1");
-            dataSource.Add("Tag2");
+            var dataSource = new List<string>
+            {
+                "Tag Filter",
+                "Tag1",
+                "Tag2",
+            };
             tagFilterComboBox.DataSource = dataSource;
             //tagFilterComboBox.DataSource = _book.PageTags;
         }
@@ -198,11 +200,19 @@ namespace FirstNotebook
 
         private void UpdateViewWithPage(Page page)
         {
-            _currentPage = page;
-            titleTextBox.Text = page.PageTitle;
-            noteAreaTextBox.Rtf = page.PageData;
-            pageNumberLabel.Text = "Page " + page.PageNumber;
-            dateLabel.Text = _currentPage.CreatedDate.ToString("yyyy-MM-dd h:mm tt");
+            if (page != null)
+            {
+                _currentPage = page;
+                titleTextBox.Text = page.PageTitle;
+                noteAreaTextBox.Rtf = page.PageData;
+                pageNumberLabel.Text = "Page " + page.PageNumber;
+                dateLabel.Text = _currentPage.CreatedDate.ToString("yyyy-MM-dd h:mm tt");
+            }
+            else
+            {
+                // Something went wrong.  Why is there no page?
+                ErrorHandler.Error(GetType(), "UpdateViewWithPage", "Page is null.", null);
+            }
         }
 
         private void UpdateViewWithBook()
@@ -348,7 +358,7 @@ namespace FirstNotebook
             _searchToken = searchBox.Text;
             searchBox.Focus();
 
-            SearchRecord nextMatch = FindNextMatch(_searchRecord);
+            var nextMatch = FindNextMatch(_searchRecord);
 
             if (nextMatch == null)
             {
@@ -383,7 +393,7 @@ namespace FirstNotebook
             nextMatch.Token = startingPoint.Token;
             nextMatch.StringComparison = startingPoint.StringComparison;
 
-            int start = startingPoint.Location + 1;
+            var start = startingPoint.Location + 1;
             if (startingPoint.IsClear())
             {
                 // Happens when you click in a page during a search.
@@ -392,7 +402,7 @@ namespace FirstNotebook
                 startFromTop = true;
             }
 
-            int rangeLocation = 0;
+            var rangeLocation = 0;
 
             while (true)
             {
@@ -551,7 +561,7 @@ namespace FirstNotebook
                 UpdateViewWithPage(_activeView.GetPage(0));
                 _searchRecord.Page = _currentPage;
                 _searchRecord.Token = _searchToken;
-                int location = _currentPage.PageTitle.IndexOf(_searchToken, _searchRecord.StringComparison);
+                var location = _currentPage.PageTitle.IndexOf(_searchToken, _searchRecord.StringComparison);
                 if (location != -1)
                 {
                     _searchRecord.InTitle = true;
@@ -620,7 +630,7 @@ namespace FirstNotebook
         {
             if (_book.Dirty)
             {
-                string filename = Path.GetFileName(_book.FileName);
+                var filename = Path.GetFileName(_book.FileName);
                 var status = MessageBox.Show($"Do you want to save changes to notebook {filename}?", "jNotebook",
                    MessageBoxButtons.YesNoCancel);
 
@@ -685,7 +695,7 @@ namespace FirstNotebook
         {
             try
             {
-                string name = (sender as Button).Name;
+                var name = (sender as Button).Name;
                 if (name.Equals("ButtonZoomIn"))
                 {
                     noteAreaTextBox.ZoomFactor += 0.2f;
@@ -723,8 +733,8 @@ namespace FirstNotebook
             {
                 try
                 {
-                    Font currentFont = noteAreaTextBox.SelectionFont;
-                    FontStyle newFontStyle = noteAreaTextBox.SelectionFont.Style;
+                    var currentFont = noteAreaTextBox.SelectionFont;
+                    var newFontStyle = noteAreaTextBox.SelectionFont.Style;
                     if (action.Equals("Bold"))
                     {
                         newFontStyle = noteAreaTextBox.SelectionFont.Style ^ FontStyle.Bold;
@@ -756,9 +766,11 @@ namespace FirstNotebook
 
         private void ButtonFGColor_Click(object sender, EventArgs e)
         {
-            ColorDialog colorDialog1 = new ColorDialog();
-            colorDialog1.AllowFullOpen = false;
-            colorDialog1.AnyColor = false;
+            var colorDialog1 = new ColorDialog
+            {
+                AllowFullOpen = false,
+                AnyColor = false,
+            };
 
             if (colorDialog1.ShowDialog() == DialogResult.OK)
             {
@@ -768,13 +780,17 @@ namespace FirstNotebook
                     NoteView_TextChanged();
                 }
             }
+
+            colorDialog1.Dispose();
         }
 
         private void ButtonBGColor_Click(object sender, EventArgs e)
         {
-            ColorDialog colorDialog1 = new ColorDialog();
-            colorDialog1.AllowFullOpen = false;
-            colorDialog1.AnyColor = false;
+            var colorDialog1 = new ColorDialog
+            {
+                AllowFullOpen = false,
+                AnyColor = false,
+            };
 
             if (colorDialog1.ShowDialog() == DialogResult.OK)
             {
@@ -784,11 +800,13 @@ namespace FirstNotebook
                     NoteView_TextChanged();
                 }
             }
+
+            colorDialog1.Dispose();
         }
 
         private void ButtonTodo_Click(object sender, EventArgs e)
         {
-            int startPos = noteAreaTextBox.SelectionStart;
+            var startPos = noteAreaTextBox.SelectionStart;
             if (noteAreaTextBox.TextLength == startPos)
             {
                 // BUG: If at the end of text, your cursor is left in the formatting of the TODO tag.
@@ -804,13 +822,60 @@ namespace FirstNotebook
 
         private void ButtonDone_Click(object sender, EventArgs e)
         {
-            int startPos = noteAreaTextBox.SelectionStart;
+            var startPos = noteAreaTextBox.SelectionStart;
             noteAreaTextBox.SelectedText = "DONE";
             noteAreaTextBox.Select(startPos, 4);
             noteAreaTextBox.SelectionBackColor = Color.LightGray;
             noteAreaTextBox.Select(startPos + 4, 0);
             noteAreaTextBox.Select();
             NoteView_TextChanged();
+        }
+
+        private void DeletePageToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (_currentPage == null)
+            {
+                return;
+            }
+
+            var shouldDelete = MessageBox.Show($"Do you want to delete the current page (#{_currentPage.PageNumber})?", "jNotebook",
+                   MessageBoxButtons.YesNo);
+
+            if (shouldDelete == DialogResult.Yes)
+            {
+                _book.DeletePage(_currentPage);
+                _book.Dirty = true;
+                _activeView.DeletePage(_currentPage);
+                _book.RenumberPages();
+
+                titleListView.Items[_lastSelectedRow].Remove();
+                if (titleListView.Items.Count <= _lastSelectedRow)
+                {
+                    _lastSelectedRow--;
+                }
+
+                // if you try to delete the last page...
+                if ((_lastSelectedRow < 0) && (_activeView.PageCount == _book.PageCount))
+                {
+                    _book.GetNewPage();
+                    _lastSelectedRow = 0;
+                }
+                else if ((_lastSelectedRow < 0) && (_activeView.PageCount != _book.PageCount))
+                {
+                    // Clear filters and all
+                    _searchToken = null;
+                    _searchEngine.CancelFindMatchingPages();
+                    _activeView = _book;
+                    _lastSelectedRow = 0;
+                }
+
+                RebuildTitleList();
+                titleListView.Items[_lastSelectedRow].Selected = true;
+                titleListView.Items[_lastSelectedRow].EnsureVisible();
+                titleListView.Focus();
+
+                UpdateViewWithPage(_activeView.GetPage(_lastSelectedRow));
+            }
         }
     }
 }

@@ -40,6 +40,8 @@ namespace FirstNotebook
             this.dateHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.titleHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tagsHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.noteAreaTextBox = new System.Windows.Forms.RichTextBox();
             this.pageNumberLabel = new System.Windows.Forms.Label();
             this.dateLabel = new System.Windows.Forms.Label();
             this.titleTextBox = new System.Windows.Forms.TextBox();
@@ -57,7 +59,6 @@ namespace FirstNotebook
             this.ButtonZoomOut = new System.Windows.Forms.Button();
             this.ButtonTodo = new System.Windows.Forms.Button();
             this.ButtonDone = new System.Windows.Forms.Button();
-            this.noteAreaTextBox = new System.Windows.Forms.RichTextBox();
             this.clearButton = new System.Windows.Forms.Button();
             this.tagFilterComboBox = new System.Windows.Forms.ComboBox();
             this.searchBox = new System.Windows.Forms.TextBox();
@@ -119,6 +120,7 @@ namespace FirstNotebook
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.RTBPannel.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -135,16 +137,17 @@ namespace FirstNotebook
             // 
             // splitContainer1.Panel2
             // 
+            this.splitContainer1.Panel2.Controls.Add(this.panel1);
             this.splitContainer1.Panel2.Controls.Add(this.pageNumberLabel);
             this.splitContainer1.Panel2.Controls.Add(this.dateLabel);
             this.splitContainer1.Panel2.Controls.Add(this.titleTextBox);
             this.splitContainer1.Panel2.Controls.Add(this.pageTagsComboBox);
             this.splitContainer1.Panel2.Controls.Add(this.RTBPannel);
-            this.splitContainer1.Panel2.Controls.Add(this.noteAreaTextBox);
             this.splitContainer1.TabStop = false;
             // 
             // titleListView
             // 
+            resources.ApplyResources(this.titleListView, "titleListView");
             this.titleListView.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.titleListView.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.titleListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
@@ -152,7 +155,6 @@ namespace FirstNotebook
             this.dateHeader,
             this.titleHeader,
             this.tagsHeader});
-            resources.ApplyResources(this.titleListView, "titleListView");
             this.titleListView.FullRowSelect = true;
             this.titleListView.GridLines = true;
             this.titleListView.HideSelection = false;
@@ -179,6 +181,23 @@ namespace FirstNotebook
             // tagsHeader
             // 
             resources.ApplyResources(this.tagsHeader, "tagsHeader");
+            // 
+            // panel1
+            // 
+            resources.ApplyResources(this.panel1, "panel1");
+            this.panel1.Controls.Add(this.noteAreaTextBox);
+            this.panel1.Name = "panel1";
+            // 
+            // noteAreaTextBox
+            // 
+            this.noteAreaTextBox.AcceptsTab = true;
+            resources.ApplyResources(this.noteAreaTextBox, "noteAreaTextBox");
+            this.noteAreaTextBox.BackColor = System.Drawing.SystemColors.Info;
+            this.noteAreaTextBox.HideSelection = false;
+            this.noteAreaTextBox.Name = "noteAreaTextBox";
+            this.noteAreaTextBox.LinkClicked += new System.Windows.Forms.LinkClickedEventHandler(this.Link_Clicked);
+            this.noteAreaTextBox.GotFocus += new System.EventHandler(this.NoteView_Focus);
+            this.noteAreaTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.NoteView_KeyUp);
             // 
             // pageNumberLabel
             // 
@@ -314,17 +333,6 @@ namespace FirstNotebook
             this.ButtonDone.Name = "ButtonDone";
             this.ButtonDone.UseVisualStyleBackColor = true;
             this.ButtonDone.Click += new System.EventHandler(this.ButtonDone_Click);
-            // 
-            // noteAreaTextBox
-            // 
-            this.noteAreaTextBox.AcceptsTab = true;
-            resources.ApplyResources(this.noteAreaTextBox, "noteAreaTextBox");
-            this.noteAreaTextBox.BackColor = System.Drawing.SystemColors.Info;
-            this.noteAreaTextBox.HideSelection = false;
-            this.noteAreaTextBox.Name = "noteAreaTextBox";
-            this.noteAreaTextBox.LinkClicked += new System.Windows.Forms.LinkClickedEventHandler(this.Link_Clicked);
-            this.noteAreaTextBox.GotFocus += new System.EventHandler(this.NoteView_Focus);
-            this.noteAreaTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.NoteView_KeyUp);
             // 
             // clearButton
             // 
@@ -605,6 +613,7 @@ namespace FirstNotebook
             // 
             this.deletePageToolStripMenuItem.Name = "deletePageToolStripMenuItem";
             resources.ApplyResources(this.deletePageToolStripMenuItem, "deletePageToolStripMenuItem");
+            this.deletePageToolStripMenuItem.Click += new System.EventHandler(this.DeletePageToolStripMenuItem_Click);
             // 
             // toolStripSeparator7
             // 
@@ -726,6 +735,7 @@ namespace FirstNotebook
             this.splitContainer1.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
             this.RTBPannel.ResumeLayout(false);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -948,6 +958,7 @@ namespace FirstNotebook
         private ToolStripSeparator toolStripSeparator5;
         private ToolStripMenuItem aboutToolStripMenuItem;
         private MenuStrip menuStrip1;
+        private Panel panel1;
     }
 }
 

@@ -78,7 +78,7 @@ namespace FirstNotebook
                 Dirty = true;
             }
 
-            Page page = new Page(_pages.Count + 1);
+            var page = new Page(_pages.Count + 1);
             _pages.Add(page);
             return page;
         }
@@ -122,7 +122,7 @@ namespace FirstNotebook
             }
 
             bool added = false;
-            for (int i = 0; i < _pages.Count; i++)
+            for (var i = 0; i < _pages.Count; i++)
             {
                 Page page = _pages[i];
                 if (newPage.CreatedDate >= page.CreatedDate)
@@ -131,7 +131,7 @@ namespace FirstNotebook
                     added = true;
 
                     // Renumber the remaining pages
-                    for (int j = i; j < _pages.Count; j++)
+                    for (var j = i; j < _pages.Count; j++)
                     {
                         _pages[j].PageNumber = j + 1;
                     }
@@ -151,6 +151,14 @@ namespace FirstNotebook
         public void DeletePage(Page page)
         {
             _pages.Remove(page);
+        }
+
+        public void RenumberPages()
+        {
+            for (var i = 0; i < _pages.Count; i++)
+            {
+                _pages[i].PageNumber = i + 1;
+            }
         }
 
         public Book FindMatching(string token, StringComparison comparison)
