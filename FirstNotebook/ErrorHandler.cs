@@ -5,7 +5,7 @@ namespace FirstNotebook
 {
     public static class ErrorHandler
     {
-        public static void Error(Type className, string method, string message, Exception e)
+        public static void Error(Type className, string method, string message, Exception exception)
         {
             if (className == null)
             {
@@ -13,6 +13,7 @@ namespace FirstNotebook
             }
 
             MessageBox.Show($"Error in {className.ToString()}\nMethod: {method}\nMessage: {message}", "Error",   MessageBoxButtons.OK);
+            Console.WriteLine(exception.ToString());
         }
     }
 }

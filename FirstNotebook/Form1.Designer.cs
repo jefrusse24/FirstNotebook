@@ -608,6 +608,7 @@ namespace FirstNotebook
             // 
             this.lockUnlockPageToolStripMenuItem.Name = "lockUnlockPageToolStripMenuItem";
             resources.ApplyResources(this.lockUnlockPageToolStripMenuItem, "lockUnlockPageToolStripMenuItem");
+            this.lockUnlockPageToolStripMenuItem.Click += new System.EventHandler(this.LockUnlockPageToolStripMenuItem_Click);
             // 
             // deletePageToolStripMenuItem
             // 

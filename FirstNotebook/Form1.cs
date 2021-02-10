@@ -164,6 +164,11 @@ namespace FirstNotebook
                 RebuildTitleList();
             }
 
+            if (string.IsNullOrEmpty(_searchToken) && (_activeView != _book))
+            {
+                ErrorHandler.Error(GetType(), "PrepareForNewPage", "search is null but book is not AV.", null);
+            }
+
             // Create a new page
             _currentPage = _book.GetNewPage();
 
@@ -237,6 +242,11 @@ namespace FirstNotebook
                 listViewItem.SubItems.Add(page.GetPageTitle());
                 titleListView.Items.Add(listViewItem);
             }
+
+            //titleListView.Invalidate();
+            //titleListView.Update();
+            //titleListView.Refresh();
+            //Application.DoEvents();
         }
 
         private void PageInfoButton_Clicked(object sender, EventArgs e)
@@ -389,9 +399,11 @@ namespace FirstNotebook
                 startFromTop = true;
             }
 
-            SearchRecord nextMatch = new SearchRecord();
-            nextMatch.Token = startingPoint.Token;
-            nextMatch.StringComparison = startingPoint.StringComparison;
+            SearchRecord nextMatch = new SearchRecord()
+            {
+                Token = startingPoint.Token,
+                StringComparison = startingPoint.StringComparison
+            };
 
             var start = startingPoint.Location + 1;
             if (startingPoint.IsClear())
@@ -498,7 +510,6 @@ namespace FirstNotebook
             {
                 // redraw page with no search hilighting
                 UpdateViewWithPage(_currentPage);
-                _searchToken = string.Empty;
             }
         }
 
@@ -875,6 +886,41 @@ namespace FirstNotebook
                 titleListView.Focus();
 
                 UpdateViewWithPage(_activeView.GetPage(_lastSelectedRow));
+            }
+        }
+
+        private void LockUnlockPageToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //if (_currentPage.IsLocked)
+            //{
+            //    //Unlock Page
+            //}
+
+            if (string.IsNullOrEmpty(_currentPage.PasskeyHash))
+            {
+                var inputDialog = new InputDialog();
+                if (inputDialog.DoModal() == DialogResult.OK)
+                {
+                    if (inputDialog.IsValidPassword() != PasswordResult.PasswordGood)
+                    {
+                        MessageBox.Show($"Problem with the password. ({inputDialog.IsValidPassword().ToString()})?", "jNotebook", MessageBoxButtons.OK);
+                        return;
+                    }
+
+                    var password = inputDialog.GetPassword();
+                    var startPos = noteAreaTextBox.SelectionStart;
+                    if (noteAreaTextBox.TextLength == startPos)
+                    {
+                        // BUG: If at the end of text, your cursor is left in the formatting of the TODO tag.
+                    }
+
+                    noteAreaTextBox.SelectedText = password;
+                    noteAreaTextBox.Select(startPos, password.Length);
+                    noteAreaTextBox.SelectionBackColor = Color.Red;
+                    noteAreaTextBox.Select(startPos + password.Length, 0);
+                    noteAreaTextBox.Select();
+                    NoteView_TextChanged();
+                }
             }
         }
     }

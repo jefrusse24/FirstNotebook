@@ -51,6 +51,14 @@ namespace FirstNotebook
             }
         }
 
+        public int PageCount
+        {
+            get
+            {
+                return _pages.Count;
+            }
+        }
+
         public List<string> GetPageTagsInBook()
         {
             var tags = new List<string>();
@@ -61,14 +69,6 @@ namespace FirstNotebook
             }
 
             return tags;
-        }
-
-        public int PageCount
-        {
-            get
-            {
-                return _pages.Count;
-            }
         }
 
         public Page GetNewPage()

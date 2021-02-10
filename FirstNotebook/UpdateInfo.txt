@@ -5,7 +5,8 @@ Bug0001: When closing the application and there have been modifications, when yo
 Bug0012: Filename does not necessarily match book name.  If you use explorer and copy a notebook, then open that copy, it will show the name of the original book, and not the filename.
 Bug0019: Exception when trying to switch pages.  Not sure why, but the UpdateViewWithPage was called with a null page.  That is because TitleList_SelectionChanged LastSelectedRow returned a row that we did not like.  A search had been implemented, so not all the pages in the book were in the TitleList. 
 Bug0020: When you click on the Menu Item File -> New..., and it createst a new document, the title of the window does not remove the filename of the last document.
-Bug0022:
+Bug0023:
+Bug0024:
 
 
 ENH0001: Add page tag functionality.
@@ -100,3 +101,11 @@ Put the RichTextBox inside a Panel.  Then make the RichTextBox fill the entire p
 Bug0021: Can not delete a page.  The delete menu item does nothing.
 Fixed/Implemented.
 Also change a lot of types to "var".
+
+2019-12-15
+Started Page Lock functionality.  Created a dialog box that requests a password.
+
+2020-07-21
+Bug0022: If you click on New Page after editing a page that you found doing a search, I get an error saying "Error in FirstNotebook.Form1 Method: UpdateViewWithPage Message: Page is null."
+Fixed this.  Removed an accidental clearing of the _searchToken in teh NoteView_Focus method.
+
