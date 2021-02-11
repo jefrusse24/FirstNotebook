@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Media;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.Threading;
 using System.Windows.Forms;
 using FirstNotebook.PubSub;
 using FirstNotebook.Search;
@@ -22,6 +24,7 @@ namespace FirstNotebook
         private SearchRecord _searchRecord;
         private int _lastSelectedRow;  // Keep track of currently selected row in listview - used to update title if the selected row changes.
         private SearchEngine _searchEngine;
+        private Thread _backgroundSaveThread;
 
         public Form1()
         {
@@ -57,6 +60,62 @@ namespace FirstNotebook
             };
             tagFilterComboBox.DataSource = dataSource;
             //tagFilterComboBox.DataSource = _book.PageTags;
+
+            InitBackgroundSaver();
+        }
+
+        private void InitBackgroundSaver()
+        {
+            _backgroundSaveThread = new Thread(() =>
+            {
+                while (true)
+                {
+                    Thread.Sleep(20 * 60 * 1000);   // 20 minute auto backup timeer.
+
+                    if (_book.Dirty)
+                    {
+                        // Running on the UI thread
+                        noteAreaTextBox.Invoke(new MethodInvoker(() =>
+                        {
+                            _currentPage.PageData = noteAreaTextBox.Rtf;
+                        }));
+                        _currentPage.PageTitle = titleTextBox.Text;
+
+                        Stream stream = null;
+                        try
+                        {
+                            var tempFilename = _book.FileName + ".bak";
+                            stream = File.Create(tempFilename);
+                            BinaryFormatter bf = new BinaryFormatter();
+                            bf.Serialize(stream, _book);
+                            stream.Close();
+                            stream.Dispose();
+                        }
+                        catch (Exception)
+                        {
+                            if (stream != null)
+                            {
+                                stream.Dispose();
+                            }
+                        }
+                    }
+                }
+            })
+            {
+                IsBackground = true
+            };
+        }
+
+        private void StopBackgroundSaving()
+        {
+            _backgroundSaveThread.Abort();
+            var tempFilename = _book.FileName + ".bak";
+            if (File.Exists(tempFilename))
+            {
+                File.Delete(tempFilename);
+            }
+
+            InitBackgroundSaver();
         }
 
         /**********************************************************************************
@@ -64,6 +123,13 @@ namespace FirstNotebook
          * *******************************************************************************/
         private void NewPageButton_Click(object sender, EventArgs e)
         {
+            if (_book.Dirty == false)
+            {
+                _book.Dirty = true;
+                Text = $@"{ApplicationName} - {Path.GetFileName(_book.FileName)} *";
+                _backgroundSaveThread.Start();
+            }
+
             PrepareForNewPage();
             noteAreaTextBox.Clear();
             titleTextBox.Clear();
@@ -77,7 +143,6 @@ namespace FirstNotebook
             titleListView.Items[_lastSelectedRow].Selected = true;
             titleListView.Items[_lastSelectedRow].EnsureVisible();
             _pageIsDirty = false;
-            _book.Dirty = true;
         }
 
         private void ListView_MouseUp(object sender, EventArgs e)
@@ -139,6 +204,7 @@ namespace FirstNotebook
             {
                 _book.Dirty = true;
                 Text = $@"{ApplicationName} - {Path.GetFileName(_book.FileName)} *";
+                _backgroundSaveThread.Start();
             }
         }
 
@@ -649,10 +715,15 @@ namespace FirstNotebook
                 {
                     e.Cancel = true;
                     MenuFile_Save(sender, e);
+                    StopBackgroundSaving();
                 }
                 else if (status == DialogResult.Cancel)
                 {
                     e.Cancel = true;
+                }
+                else
+                {
+                    StopBackgroundSaving();
                 }
             }
         }

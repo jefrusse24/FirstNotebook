@@ -784,26 +784,37 @@ namespace FirstNotebook
 
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                try
+                var shouldWeReallyOpen = true;
+                var backupFilename = openFileDialog1.FileName + ".bak";
+                if (File.Exists(backupFilename))
                 {
-                    if ((myStream = openFileDialog1.OpenFile()) != null)
-                    {
-                        openFileDialog1.Dispose();
-                        BinaryFormatter bf = new BinaryFormatter();
-                        _book = (Book)bf.Deserialize(myStream);
-                        _searchEngine.UpdateBook(_book);
-                        _activeView = _book;
-                        myStream.Close();
-                        myStream.Dispose();
-                        UpdateViewWithBook();
-                        _pageIsDirty = false;
-                        Text = $"{ApplicationName} - {Path.GetFileName(_book.FileName)}";
-                        _book.Dirty = false;
-                    }
+                    MessageBox.Show("Cannot open file.  Backup file exists.  Please resolve.\n" + backupFilename, "Oops", MessageBoxButtons.OK);
+                    shouldWeReallyOpen = false;
                 }
-                catch (Exception)
+
+                if (shouldWeReallyOpen)
                 {
-                    // Issue opening file.
+                    try
+                    {
+                        if ((myStream = openFileDialog1.OpenFile()) != null)
+                        {
+                            openFileDialog1.Dispose();
+                            BinaryFormatter bf = new BinaryFormatter();
+                            _book = (Book)bf.Deserialize(myStream);
+                            _searchEngine.UpdateBook(_book);
+                            _activeView = _book;
+                            myStream.Close();
+                            myStream.Dispose();
+                            UpdateViewWithBook();
+                            _pageIsDirty = false;
+                            Text = $"{ApplicationName} - {Path.GetFileName(_book.FileName)}";
+                            _book.Dirty = false;
+                        }
+                    }
+                    catch (Exception)
+                    {
+                        // Issue opening file.
+                    }
                 }
             }
             openFileDialog1.Dispose();
@@ -837,6 +848,7 @@ namespace FirstNotebook
             _book.Dirty = false;
             _pageIsDirty = false;
             Text = $"{ApplicationName} - {Path.GetFileName(_book.FileName)}";
+            StopBackgroundSaving();
         }
 
         private void MenuFile_SaveAs(object sender, EventArgs e)
@@ -861,6 +873,7 @@ namespace FirstNotebook
                     _book.Dirty = false;
                     _pageIsDirty = false;
                     Text = $"{ApplicationName} - {Path.GetFileName(_book.FileName)}";
+                    StopBackgroundSaving();
                 }
             }
             saveFileDialog1.Dispose();

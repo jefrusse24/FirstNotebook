@@ -5,8 +5,9 @@ Bug0001: When closing the application and there have been modifications, when yo
 Bug0012: Filename does not necessarily match book name.  If you use explorer and copy a notebook, then open that copy, it will show the name of the original book, and not the filename.
 Bug0019: Exception when trying to switch pages.  Not sure why, but the UpdateViewWithPage was called with a null page.  That is because TitleList_SelectionChanged LastSelectedRow returned a row that we did not like.  A search had been implemented, so not all the pages in the book were in the TitleList. 
 Bug0020: When you click on the Menu Item File -> New..., and it createst a new document, the title of the window does not remove the filename of the last document.
-Bug0023:
 Bug0024:
+Bug0025:
+Bug0026:
 
 
 ENH0001: Add page tag functionality.
@@ -15,7 +16,8 @@ ENH0001: Add page tag functionality.
 ENH0002: Add Page Lock Functionality.  Use password in ENH0003 or seperate password.
 ENH0003: Add Preferences - Page Color, Host, username, password.
 ENH0007: While searching, return partial results every couple seconds until the entire results are done.
-ENH0008:
+ENH0009: Remove the filename from the book serialization.  The filename can be set when you open the file.
+ENH0010:
 
 
 
@@ -108,4 +110,13 @@ Started Page Lock functionality.  Created a dialog box that requests a password.
 2020-07-21
 Bug0022: If you click on New Page after editing a page that you found doing a search, I get an error saying "Error in FirstNotebook.Form1 Method: UpdateViewWithPage Message: Page is null."
 Fixed this.  Removed an accidental clearing of the _searchToken in teh NoteView_Focus method.
+
+2021-02-09
+ENH0008: Autosave - Automatically save the current document to a temp file while the program is running.  Perform this auto-save every 20 minutes.
+
+2021-02-10
+  DONE: Only start the thread saving if the file is dirty.  
+  DONE: When you save a file, delete the temp file.
+  DONE: When you open a file, and there is a temp file, display a message and cancel.
+  Bug0023: After opening the file, and if you hit the "New" button, you will not ever see the file go dirty.
 
