@@ -126,6 +126,11 @@ namespace FirstNotebook
             }
         }
 
+        public void AddPageBreak()
+        {
+            _pageData += "-------------- BREAK ------------------";
+        }
+
         public void GetObjectData(SerializationInfo info, StreamingContext context)
         {
             if (info == null)

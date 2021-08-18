@@ -59,6 +59,7 @@ namespace FirstNotebook
             this.ButtonZoomOut = new System.Windows.Forms.Button();
             this.ButtonTodo = new System.Windows.Forms.Button();
             this.ButtonDone = new System.Windows.Forms.Button();
+            this.ButtonLineBreak = new System.Windows.Forms.Button();
             this.clearButton = new System.Windows.Forms.Button();
             this.tagFilterComboBox = new System.Windows.Forms.ComboBox();
             this.searchBox = new System.Windows.Forms.TextBox();
@@ -116,6 +117,7 @@ namespace FirstNotebook
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.FrormatLineBreakMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -239,6 +241,7 @@ namespace FirstNotebook
             this.RTBPannel.Controls.Add(this.ButtonZoomOut);
             this.RTBPannel.Controls.Add(this.ButtonTodo);
             this.RTBPannel.Controls.Add(this.ButtonDone);
+            this.RTBPannel.Controls.Add(this.ButtonLineBreak);
             this.RTBPannel.Name = "RTBPannel";
             // 
             // ButtonBold
@@ -333,6 +336,13 @@ namespace FirstNotebook
             this.ButtonDone.Name = "ButtonDone";
             this.ButtonDone.UseVisualStyleBackColor = true;
             this.ButtonDone.Click += new System.EventHandler(this.ButtonDone_Click);
+            // 
+            // ButtonLineBreak
+            // 
+            resources.ApplyResources(this.ButtonLineBreak, "ButtonLineBreak");
+            this.ButtonLineBreak.Name = "ButtonLineBreak";
+            this.ButtonLineBreak.UseVisualStyleBackColor = true;
+            this.ButtonLineBreak.Click += new System.EventHandler(this.ButtonLineBreak_Click);
             // 
             // clearButton
             // 
@@ -539,7 +549,8 @@ namespace FirstNotebook
             this.FormatUnderlineMenuItem,
             this.FormatBulletMenuItem,
             this.FormatIndentMenuItem,
-            this.FormatOutdentMenuItem});
+            this.FormatOutdentMenuItem,
+            this.FrormatLineBreakMenuItem});
             this.formatToolStripMenuItem.Name = "formatToolStripMenuItem";
             resources.ApplyResources(this.formatToolStripMenuItem, "formatToolStripMenuItem");
             // 
@@ -717,6 +728,13 @@ namespace FirstNotebook
             this.helpToolStripMenuItem});
             resources.ApplyResources(this.menuStrip1, "menuStrip1");
             this.menuStrip1.Name = "menuStrip1";
+            // 
+            // FrormatLineBreakMenuItem
+            // 
+            this.FrormatLineBreakMenuItem.Name = "FrormatLineBreakMenuItem";
+            resources.ApplyResources(this.FrormatLineBreakMenuItem, "FrormatLineBreakMenuItem");
+            this.FrormatLineBreakMenuItem.Click += new System.EventHandler(this.ButtonLineBreak_Click);
+
             // 
             // Form1
             // 
@@ -973,6 +991,8 @@ namespace FirstNotebook
         private ToolStripMenuItem aboutToolStripMenuItem;
         private MenuStrip menuStrip1;
         private Panel panel1;
+        private Button ButtonLineBreak;
+        private ToolStripMenuItem FrormatLineBreakMenuItem;
     }
 }
 

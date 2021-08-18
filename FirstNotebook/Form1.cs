@@ -913,6 +913,18 @@ namespace FirstNotebook
             NoteView_TextChanged();
         }
 
+        private void ButtonLineBreak_Click(object sender, EventArgs e)
+        {
+            var startPos = noteAreaTextBox.SelectionStart;
+            noteAreaTextBox.SelectedText = "                                                            \n";
+            noteAreaTextBox.Select(startPos, 61);
+            noteAreaTextBox.SelectionBackColor = Color.LightSalmon;
+            noteAreaTextBox.SelectionFont = new Font("Courier New", 12);
+            noteAreaTextBox.Select(startPos + 61, 0);
+            noteAreaTextBox.Select();
+            NoteView_TextChanged();
+        }
+
         private void DeletePageToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (_currentPage == null)
