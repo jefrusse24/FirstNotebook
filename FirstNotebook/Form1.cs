@@ -15,7 +15,7 @@ namespace FirstNotebook
     {
         public const int Indent = 25;
         public const string ApplicationName = "jNotebook";
-        public const string Version = "1.4";
+        public const string Version = "2.0";
         private Page _currentPage;
         private bool _pageIsDirty;
         private Book _book;
@@ -204,7 +204,10 @@ namespace FirstNotebook
             {
                 _book.Dirty = true;
                 Text = $@"{ApplicationName} - {Path.GetFileName(_book.FileName)} *";
-                _backgroundSaveThread.Start();
+                if (!_backgroundSaveThread.IsAlive)
+                {
+                    _backgroundSaveThread.Start();
+                }
             }
         }
 
@@ -568,10 +571,12 @@ namespace FirstNotebook
             }
         }
 
-        private void NoteView_Focus(object sender, EventArgs e)
+        private void SearchTextBox_LooseFocus(object sender, EventArgs e)
         {
-            // if searchtoken contins simething, then when we focus in the noteview, we need to redraw it.
-            // This helps fix the hilighted formatting that is done with the find.
+            // if searchtoken contains something, then when we focus in the noteview, we need to redraw it.
+            // This helps fix the hilighted formatting that is done with the find. (ENH0006)
+
+            // This is causing a problem with editing a page from a search and then loose focus and re-gain focus. (Bug0025)
             if (!string.IsNullOrEmpty(_searchToken))
             {
                 // redraw page with no search hilighting

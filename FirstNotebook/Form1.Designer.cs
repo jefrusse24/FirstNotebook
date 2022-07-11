@@ -198,7 +198,7 @@ namespace FirstNotebook
             this.noteAreaTextBox.HideSelection = false;
             this.noteAreaTextBox.Name = "noteAreaTextBox";
             this.noteAreaTextBox.LinkClicked += new System.Windows.Forms.LinkClickedEventHandler(this.Link_Clicked);
-            this.noteAreaTextBox.GotFocus += new System.EventHandler(this.NoteView_Focus);
+            //this.noteAreaTextBox.GotFocus += new System.EventHandler(this.NoteView_Focus);
             this.noteAreaTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.NoteView_KeyUp);
             // 
             // pageNumberLabel
@@ -369,6 +369,7 @@ namespace FirstNotebook
             this.searchBox.Name = "searchBox";
             this.searchBox.TextChanged += new System.EventHandler(this.SearchTextBox_Change);
             this.searchBox.GotFocus += new System.EventHandler(this.SearchTextBox_Focus);
+            this.searchBox.LostFocus += new System.EventHandler(this.SearchTextBox_LooseFocus);
             // 
             // pageInfoButton
             // 
