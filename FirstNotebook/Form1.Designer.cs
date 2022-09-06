@@ -807,8 +807,19 @@ namespace FirstNotebook
                 var backupFilename = openFileDialog1.FileName + ".bak";
                 if (File.Exists(backupFilename))
                 {
-                    MessageBox.Show("Cannot open file.  Backup file exists.  Please resolve.\n" + backupFilename, "Oops", MessageBoxButtons.OK);
-                    shouldWeReallyOpen = false;
+                    var shouldWeUseBackup = MessageBox.Show("Backup of file exists.  Do you want to use the backup?", "Oops", MessageBoxButtons.YesNo);
+                    //MessageBox.Show("Cannot open file.  Backup file exists.  Please resolve.\n" + backupFilename, "Oops", MessageBoxButtons.OK);
+                    if (shouldWeUseBackup == DialogResult.Yes)
+                    {
+                        File.Copy(openFileDialog1.FileName, openFileDialog1.FileName+".bak2",true);
+                        File.Delete(openFileDialog1.FileName);
+                        File.Move(openFileDialog1.FileName+".bak", openFileDialog1.FileName);
+                        shouldWeReallyOpen = true;
+                    }
+                    else
+                    {
+                        shouldWeReallyOpen = false;
+                    }
                 }
 
                 if (shouldWeReallyOpen)

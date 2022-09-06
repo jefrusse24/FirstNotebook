@@ -17,7 +17,8 @@ ENH0002: Add Page Lock Functionality.  Use password in ENH0003 or seperate passw
 ENH0003: Add Preferences - Page Color, Host, username, password.
 ENH0007: While searching, return partial results every couple seconds until the entire results are done.
 ENH0009: Remove the filename from the book serialization.  The filename can be set when you open the file.
-ENH0010:
+ENH0011:
+ENH0012:
 
 
 
@@ -127,3 +128,7 @@ ENH0008: Autosave - Automatically save the current document to a temp file while
 2022-07-11
   Bug0025: 2022-07-11 - While in search, and you edit the page, if you switch to a different application, then back, the changes are gone.
     Created new event handler SearchTextBox_LooseFocus.
+
+2022-09-06
+  ENH0010: 2022-09-06 If a backup file exists, give the person an option to use the backup file.
+    If the user says yes, then rename the original to filename.eno.bak2, and rename the backup to filename.eno.

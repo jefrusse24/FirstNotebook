@@ -70,7 +70,7 @@ namespace FirstNotebook
             {
                 while (true)
                 {
-                    Thread.Sleep(20 * 60 * 1000);   // 20 minute auto backup timeer.
+                    Thread.Sleep(20 * 60 * 1000);   // 20 minute auto backup timer.
 
                     if (_book.Dirty)
                     {
