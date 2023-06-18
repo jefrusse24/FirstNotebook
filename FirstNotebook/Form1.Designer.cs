@@ -96,6 +96,7 @@ namespace FirstNotebook
             this.FormatBulletMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.FormatIndentMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.FormatOutdentMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.FrormatLineBreakMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newPageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pageInfoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -117,7 +118,6 @@ namespace FirstNotebook
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.FrormatLineBreakMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -198,7 +198,6 @@ namespace FirstNotebook
             this.noteAreaTextBox.HideSelection = false;
             this.noteAreaTextBox.Name = "noteAreaTextBox";
             this.noteAreaTextBox.LinkClicked += new System.Windows.Forms.LinkClickedEventHandler(this.Link_Clicked);
-            //this.noteAreaTextBox.GotFocus += new System.EventHandler(this.NoteView_Focus);
             this.noteAreaTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.NoteView_KeyUp);
             // 
             // pageNumberLabel
@@ -591,6 +590,12 @@ namespace FirstNotebook
             resources.ApplyResources(this.FormatOutdentMenuItem, "FormatOutdentMenuItem");
             this.FormatOutdentMenuItem.Click += new System.EventHandler(this.FormatDentAction);
             // 
+            // FrormatLineBreakMenuItem
+            // 
+            this.FrormatLineBreakMenuItem.Name = "FrormatLineBreakMenuItem";
+            resources.ApplyResources(this.FrormatLineBreakMenuItem, "FrormatLineBreakMenuItem");
+            this.FrormatLineBreakMenuItem.Click += new System.EventHandler(this.ButtonLineBreak_Click);
+            // 
             // pageToolStripMenuItem
             // 
             this.pageToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -729,13 +734,6 @@ namespace FirstNotebook
             this.helpToolStripMenuItem});
             resources.ApplyResources(this.menuStrip1, "menuStrip1");
             this.menuStrip1.Name = "menuStrip1";
-            // 
-            // FrormatLineBreakMenuItem
-            // 
-            this.FrormatLineBreakMenuItem.Name = "FrormatLineBreakMenuItem";
-            resources.ApplyResources(this.FrormatLineBreakMenuItem, "FrormatLineBreakMenuItem");
-            this.FrormatLineBreakMenuItem.Click += new System.EventHandler(this.ButtonLineBreak_Click);
-
             // 
             // Form1
             // 
