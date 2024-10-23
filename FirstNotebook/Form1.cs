@@ -7,7 +7,9 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.Threading;
 using System.Windows.Forms;
 using FirstNotebook.PubSub;
+using FirstNotebook.QuickFilters;
 using FirstNotebook.Search;
+
 
 namespace FirstNotebook
 {
@@ -25,6 +27,7 @@ namespace FirstNotebook
         private int _lastSelectedRow;  // Keep track of currently selected row in listview - used to update title if the selected row changes.
         private SearchEngine _searchEngine;
         private Thread _backgroundSaveThread;
+        private List<System.Windows.Forms.Button> _filterButtons;
 
         public Form1()
         {
@@ -61,7 +64,58 @@ namespace FirstNotebook
             tagFilterComboBox.DataSource = dataSource;
             //tagFilterComboBox.DataSource = _book.PageTags;
 
+            ShowQuickFilters();
+
             InitBackgroundSaver();
+        }
+
+        private void ShowQuickFilters()
+        {
+            int top = splitContainer1.Bottom + 3;
+            int left = 3;
+
+            if (_filterButtons == null)
+            {
+                _filterButtons = new List<Button>();
+            }
+            else
+            {
+                foreach (Button button in _filterButtons)
+                {
+                    Controls.Remove(button);
+                }
+
+                _filterButtons.Clear();
+            }
+
+            foreach (var pageFilter in _book.FilterList)
+            {
+                System.Windows.Forms.Button button = new System.Windows.Forms.Button();
+                button.Text = pageFilter.Title;
+                button.Left = left;
+                button.Top = top;
+                button.Height = 23;
+                button.Width = 70;
+                button.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+                Controls.Add(button);
+                left += 85;
+                _filterButtons.Add(button);
+
+                button.Click += QuickFilter_Click;
+            }
+        }
+
+        private void QuickFilter_Click(object sender, EventArgs e)
+        {
+            searchBox.TextChanged -= new System.EventHandler(SearchTextBox_Change);
+            searchBox.Text = string.Empty;
+            searchBox.TextChanged += new System.EventHandler(SearchTextBox_Change);
+
+            var button = (Button)sender;
+
+            var newBook = _book.GetBookFromFilter(button.Text);
+            _activeView = newBook;
+            RebuildTitleList();
         }
 
         private void InitBackgroundSaver()
@@ -298,6 +352,7 @@ namespace FirstNotebook
             titleListView.Items[_lastSelectedRow].Selected = true;
             titleListView.Items[_lastSelectedRow].EnsureVisible();
             titleListView.Focus();
+            ShowQuickFilters();
         }
 
         private void RebuildTitleList()
@@ -708,6 +763,22 @@ namespace FirstNotebook
             searchBox.Text = string.Empty;
         }
 
+        private void QuickFilterClearButton_Click(object sender, EventArgs e)
+        {
+            _activeView = _book;
+
+            RebuildTitleList();
+
+            if (_activeView.PageCount > 0)
+            {
+                titleListView.Items[_currentPage.PageNumber - 1].Selected = true;
+                titleListView.Items[_currentPage.PageNumber - 1].EnsureVisible();
+                _lastSelectedRow = _currentPage.PageNumber - 1;
+                searchBox.Focus();
+                UpdateViewWithPage(_currentPage);
+            }
+        }
+
         private void Form1_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             if (_book.Dirty)
@@ -749,9 +820,9 @@ namespace FirstNotebook
             {
                 action = (sender as ToolStripMenuItem).Text.Replace("&", string.Empty);
             }
-            else if (sender.GetType().Equals(typeof(Button)))
+            else if (sender.GetType().Equals(typeof(System.Windows.Forms.Button)))
             {
-                action = (sender as Button).Name.Replace("Button", string.Empty);
+                action = (sender as System.Windows.Forms.Button).Name.Replace("Button", string.Empty);
             }
             else
             {
@@ -782,7 +853,7 @@ namespace FirstNotebook
         {
             try
             {
-                var name = (sender as Button).Name;
+                var name = (sender as System.Windows.Forms.Button).Name;
                 if (name.Equals("ButtonZoomIn"))
                 {
                     noteAreaTextBox.ZoomFactor += 0.2f;
@@ -807,9 +878,9 @@ namespace FirstNotebook
             {
                 action = (sender as ToolStripMenuItem).Text.Replace("&", string.Empty);
             }
-            else if (sender.GetType().Equals(typeof(Button)))
+            else if (sender.GetType().Equals(typeof(System.Windows.Forms.Button)))
             {
-                action = (sender as Button).Name.Replace("Button", string.Empty);
+                action = (sender as System.Windows.Forms.Button).Name.Replace("Button", string.Empty);
             }
             else
             {
@@ -899,10 +970,10 @@ namespace FirstNotebook
                 // BUG: If at the end of text, your cursor is left in the formatting of the TODO tag.
             }
 
-            noteAreaTextBox.SelectedText = "TODO";
+            noteAreaTextBox.SelectedText = "TODO. ";
             noteAreaTextBox.Select(startPos, 4);
             noteAreaTextBox.SelectionBackColor = Color.Violet;
-            noteAreaTextBox.Select(startPos + 4, 0);
+            noteAreaTextBox.Select(startPos + 6, 0);
             noteAreaTextBox.Select();
             NoteView_TextChanged();
         }
@@ -979,14 +1050,9 @@ namespace FirstNotebook
 
         private void LockUnlockPageToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //if (_currentPage.IsLocked)
-            //{
-            //    //Unlock Page
-            //}
-
             if (string.IsNullOrEmpty(_currentPage.PasskeyHash))
             {
-                var inputDialog = new InputDialog();
+                var inputDialog = new PasswordDialog();
                 if (inputDialog.DoModal() == DialogResult.OK)
                 {
                     if (inputDialog.IsValidPassword() != PasswordResult.PasswordGood)
@@ -1008,6 +1074,70 @@ namespace FirstNotebook
                     noteAreaTextBox.Select(startPos + password.Length, 0);
                     noteAreaTextBox.Select();
                     NoteView_TextChanged();
+                }
+            }
+        }
+
+        private void QuickFilterAddPage(object sender, EventArgs e)
+        {
+            var filterDialog = new FilterDialogAddEditFilter(_book.FilterList, FilterAction.Add_Filter_To_Page);
+            //var filterDialog = new FilterDialogPageAction(_book.FilterList, true);
+            if (filterDialog.DoModal() == DialogResult.OK)
+            {
+                var filter = filterDialog.GetSelectedName();
+                _book.UpdatePageFilter(filter, _currentPage, true);
+            }
+        }
+
+        private void QuickFilterRemovePage(object sender, EventArgs e)
+        {
+            var filterDialog = new FilterDialogAddEditFilter(_book.FilterList, FilterAction.Delete_Filter_From_Page);
+            //var filterDialog = new FilterDialogPageAction(_book.FilterList, false);
+            if (filterDialog.DoModal() == DialogResult.OK)
+            {
+                var filter = filterDialog.GetSelectedName();
+                _book.UpdatePageFilter(filter, _currentPage, false);
+            }
+        }
+
+        private void QuickFilterAddFilter(object sender, EventArgs e)
+        {
+            var filterDialog = new FilterDialogAddEditFilter(_book.FilterList, FilterAction.Add_New_Filter);
+            if (filterDialog.DoModal() == DialogResult.OK)
+            {
+                var newName = filterDialog.GetNewName();
+                if (!string.IsNullOrEmpty(newName))
+                {
+                    var pageFilter = new PageFilter(newName);
+                    _book.FilterList.Add(pageFilter);
+                    ShowQuickFilters();
+                }
+            }
+        }
+
+        private void QuickFilterRemoveFilter(object sender, EventArgs e)
+        {
+            var filterDialog = new FilterDialogAddEditFilter(_book.FilterList, FilterAction.Delete_Filter);
+            if (filterDialog.DoModal() == DialogResult.OK)
+            {
+                var oldName = filterDialog.GetSelectedName();
+                _book.FilterList.Remove(_book.FilterList.Find(pf => pf.Title == oldName));
+                ShowQuickFilters();
+            }
+        }
+
+        private void QuickFilterEditFilter(object sender, EventArgs e)
+        {
+            var filterDialog = new FilterDialogAddEditFilter(_book.FilterList, FilterAction.Update_Exising_Filter);
+            if (filterDialog.DoModal() == DialogResult.OK)
+            {
+                var oldName = filterDialog.GetSelectedName();
+                var newName = filterDialog.GetNewName();
+                if ((!string.IsNullOrEmpty(newName)) && (!oldName.Equals(newName)))
+                {
+                    var pageFilter = _book.FilterList.Find(pf => pf.Title == oldName);
+                    pageFilter.Title = newName;
+                    ShowQuickFilters();
                 }
             }
         }

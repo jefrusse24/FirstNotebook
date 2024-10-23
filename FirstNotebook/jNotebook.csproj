@@ -55,10 +55,10 @@
     <ApplicationIcon>jn.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>101233C723E1C08A7DB67BDE104B86B423DDD780</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>E14EAEF418F7A659F6D143F2E419408823E42FDE</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestKeyFile>jNotebook_TemporaryKey.pfx</ManifestKeyFile>
+    <ManifestKeyFile>jNotebook_1_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
     <GenerateManifests>true</GenerateManifests>
@@ -88,19 +88,22 @@
   <ItemGroup>
     <Compile Include="Book.cs" />
     <Compile Include="ErrorHandler.cs" />
+    <Compile Include="QuickFilters\FilterDialogAddEditFilter.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="InputDialog.cs" />
+    <Compile Include="QuickFilters\FilterAction.cs" />
+    <Compile Include="Dialog\PasswordDialog.cs" />
     <Compile Include="Page.cs" />
     <Compile Include="PasswordResult.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PubSub\EventAggregator.cs" />
     <Compile Include="PubSub\Subscription.cs" />
+    <Compile Include="QuickFilters\PageFilter.cs" />
     <Compile Include="Search\FindMatchingPagesEvent.cs" />
     <Compile Include="Search\SearchEngine.cs" />
     <Compile Include="Search\SearchRecord.cs" />
@@ -121,6 +124,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="jNotebook_1_TemporaryKey.pfx" />
     <None Include="jNotebook_TemporaryKey.pfx" />
     <None Include="packages.config" />
     <None Include="Properties\app.manifest" />

@@ -118,6 +118,14 @@ namespace FirstNotebook
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.quickFilterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addCurrentPageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.removeCurrentPageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
+            this.addFilterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.removeFilterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.editFilterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ClearButton2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -135,10 +143,12 @@ namespace FirstNotebook
             // 
             // splitContainer1.Panel1
             // 
+            resources.ApplyResources(this.splitContainer1.Panel1, "splitContainer1.Panel1");
             this.splitContainer1.Panel1.Controls.Add(this.titleListView);
             // 
             // splitContainer1.Panel2
             // 
+            resources.ApplyResources(this.splitContainer1.Panel2, "splitContainer1.Panel2");
             this.splitContainer1.Panel2.Controls.Add(this.panel1);
             this.splitContainer1.Panel2.Controls.Add(this.pageNumberLabel);
             this.splitContainer1.Panel2.Controls.Add(this.dateLabel);
@@ -731,14 +741,70 @@ namespace FirstNotebook
             this.formatToolStripMenuItem,
             this.pageToolStripMenuItem,
             this.toolsToolStripMenuItem,
+            this.quickFilterToolStripMenuItem,
             this.helpToolStripMenuItem});
             resources.ApplyResources(this.menuStrip1, "menuStrip1");
             this.menuStrip1.Name = "menuStrip1";
+            // 
+            // quickFilterToolStripMenuItem
+            // 
+            this.quickFilterToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.addCurrentPageToolStripMenuItem,
+            this.removeCurrentPageToolStripMenuItem,
+            this.toolStripSeparator8,
+            this.addFilterToolStripMenuItem,
+            this.removeFilterToolStripMenuItem,
+            this.editFilterToolStripMenuItem});
+            this.quickFilterToolStripMenuItem.Name = "quickFilterToolStripMenuItem";
+            resources.ApplyResources(this.quickFilterToolStripMenuItem, "quickFilterToolStripMenuItem");
+            // 
+            // addCurrentPageToolStripMenuItem
+            // 
+            this.addCurrentPageToolStripMenuItem.Name = "addCurrentPageToolStripMenuItem";
+            resources.ApplyResources(this.addCurrentPageToolStripMenuItem, "addCurrentPageToolStripMenuItem");
+            this.addCurrentPageToolStripMenuItem.Click += new System.EventHandler(this.QuickFilterAddPage);
+            // 
+            // removeCurrentPageToolStripMenuItem
+            // 
+            this.removeCurrentPageToolStripMenuItem.Name = "removeCurrentPageToolStripMenuItem";
+            resources.ApplyResources(this.removeCurrentPageToolStripMenuItem, "removeCurrentPageToolStripMenuItem");
+            this.removeCurrentPageToolStripMenuItem.Click += new System.EventHandler(this.QuickFilterRemovePage);
+            // 
+            // toolStripSeparator8
+            // 
+            this.toolStripSeparator8.Name = "toolStripSeparator8";
+            resources.ApplyResources(this.toolStripSeparator8, "toolStripSeparator8");
+            // 
+            // addFilterToolStripMenuItem
+            // 
+            this.addFilterToolStripMenuItem.Name = "addFilterToolStripMenuItem";
+            resources.ApplyResources(this.addFilterToolStripMenuItem, "addFilterToolStripMenuItem");
+            this.addFilterToolStripMenuItem.Click += new System.EventHandler(this.QuickFilterAddFilter);
+            // 
+            // removeFilterToolStripMenuItem
+            // 
+            this.removeFilterToolStripMenuItem.Name = "removeFilterToolStripMenuItem";
+            resources.ApplyResources(this.removeFilterToolStripMenuItem, "removeFilterToolStripMenuItem");
+            this.removeFilterToolStripMenuItem.Click += new System.EventHandler(this.QuickFilterRemoveFilter);
+            // 
+            // editFilterToolStripMenuItem
+            // 
+            this.editFilterToolStripMenuItem.Name = "editFilterToolStripMenuItem";
+            resources.ApplyResources(this.editFilterToolStripMenuItem, "editFilterToolStripMenuItem");
+            this.editFilterToolStripMenuItem.Click += new System.EventHandler(this.QuickFilterEditFilter);
+            // 
+            // ClearButton2
+            // 
+            resources.ApplyResources(this.ClearButton2, "ClearButton2");
+            this.ClearButton2.Name = "ClearButton2";
+            this.ClearButton2.UseVisualStyleBackColor = true;
+            this.ClearButton2.Click += new System.EventHandler(this.QuickFilterClearButton_Click);
             // 
             // Form1
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.ClearButton2);
             this.Controls.Add(this.clearButton);
             this.Controls.Add(this.tagFilterComboBox);
             this.Controls.Add(this.splitContainer1);
@@ -1003,6 +1069,14 @@ namespace FirstNotebook
         private Panel panel1;
         private Button ButtonLineBreak;
         private ToolStripMenuItem FrormatLineBreakMenuItem;
+        private ToolStripMenuItem quickFilterToolStripMenuItem;
+        private ToolStripMenuItem addCurrentPageToolStripMenuItem;
+        private ToolStripMenuItem removeCurrentPageToolStripMenuItem;
+        private ToolStripSeparator toolStripSeparator8;
+        private ToolStripMenuItem addFilterToolStripMenuItem;
+        private ToolStripMenuItem removeFilterToolStripMenuItem;
+        private ToolStripMenuItem editFilterToolStripMenuItem;
+        private Button ClearButton2;
     }
 }
 

@@ -3,13 +3,13 @@ using System.Windows.Forms;
 
 namespace FirstNotebook
 {
-    public class InputDialog
+    public class PasswordDialog
     {
         private readonly Form form1;
         private readonly TextBox textbox1;
         private readonly TextBox textbox2;
 
-        public InputDialog()
+        public PasswordDialog()
         {
             form1 = new Form();
             var buttonOk = new Button()

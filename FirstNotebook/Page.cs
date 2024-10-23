@@ -9,6 +9,9 @@ namespace FirstNotebook
     [Serializable]
     public class Page : ISerializable
     {
+        // If the file format changes, then you need a new version.
+        private static int pageVersion = 1;
+
         private List<string> _pageTags = new List<string>();
         private string _pageTitle;
         private string _pageData;
@@ -21,7 +24,9 @@ namespace FirstNotebook
             DerivedTitle = string.Empty;
             _pageTitle = string.Empty;
             _pageData = string.Empty;
-            Version = 1;
+            UUID = Guid.NewGuid().ToString();
+
+            Version = pageVersion;
         }
 
         public Page(SerializationInfo info, StreamingContext context)
@@ -43,6 +48,10 @@ namespace FirstNotebook
             UUID = (string)info.GetValue("UUID", typeof(string));
             LockEncryptionFlags = (string)info.GetValue("LEFlags", typeof(string));
             PasskeyHash = (string)info.GetValue("PasskeyHash", typeof(string));
+            if (string.IsNullOrEmpty(UUID))
+            {
+                UUID = Guid.NewGuid().ToString();
+            }
         }
 
         public int Version { get; set; }
